@@ -43,8 +43,8 @@ public class Application implements CommandLineRunner {
                 "date timestamp with time zone NOT NULL,"+
                 "name VARCHAR(255)," +
                 "city varchar(255) NOT NULL,"+
-                "distance DECIMAL(2, 2),"+
-                "price DECIMAL(2, 2)," +
+                "distance NUMERIC(2),"+
+                "price MONEY," +
                 "primary key (id, date));");
 
 
