@@ -36,15 +36,15 @@ public class Application implements CommandLineRunner {
 
         log.info("Creating tables");
 
-        jdbcTemplate.execute("DROP TABLE Tanken;");
+        //jdbcTemplate.execute("DROP TABLE Tanken;");
 
            jdbcTemplate.execute("CREATE TABLE Tanken(" +
                 "id SERIAL,"+
                 "date timestamp with time zone NOT NULL,"+
                 "name VARCHAR(255)," +
                 "city varchar(255) NOT NULL,"+
-                "distance BigDecimal,"+
-                "price BigDecimal," +
+                "distance DECIMAL(15,2),"+
+                "price DECIMAL(15,2)," +
                 "primary key (id, date));");
 
 
