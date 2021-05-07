@@ -13,6 +13,7 @@ public class GuenstigertankenApplication {
 
 	public static void main(String[] args) {
 		GuenstigertankenApplication app = new GuenstigertankenApplication();
+		System.out.println(app);
 	}
 }
 
