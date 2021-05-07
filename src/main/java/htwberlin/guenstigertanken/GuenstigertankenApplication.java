@@ -10,6 +10,10 @@ public class GuenstigertankenApplication {
 	public String hello() {
 		return "Hello World!";
 	}
+
+	public static void main(String[] args) {
+		GuenstigertankenApplication app = new GuenstigertankenApplication();
+	}
 }
 
 
