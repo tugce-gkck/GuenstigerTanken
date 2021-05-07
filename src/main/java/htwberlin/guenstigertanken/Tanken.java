@@ -22,6 +22,9 @@ public class Tanken {
         this.price = price;
 
     }
+    public Tanken(String date,String name,String city,double distance,double price){
+        this(0,date,name,city,distance,price);
+    }
 
     @Override
     public String toString() {
@@ -35,4 +38,28 @@ public class Tanken {
     }
 
     // getters & setters omitted for brevity
+
+    public long getId() {
+        return id;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 }

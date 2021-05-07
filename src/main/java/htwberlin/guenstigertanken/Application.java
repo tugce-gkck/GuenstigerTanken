@@ -1,6 +1,8 @@
 package htwberlin.guenstigertanken;
 
-import java.util.Arrays;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +18,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
@@ -46,24 +47,32 @@ public class Application implements CommandLineRunner {
                 "primary key (id, date));");
 
          */
-
-        // Split up the array of whole names into an array of first/last names
-        List<Object[]> splitUpTanken = Arrays.asList("2021-05-17 15:07:00+01,Aral,Berlin,4,1.1", "2021-05-17 15:07:00+01,Shell,Hamburg,10,1.0", "2021-05-17 15:07:00+01,Aral,Frankfurt,30,1.6").stream()
-                .map(name -> name.split(","))
-                .collect(Collectors.toList());
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+            Date parsedDate = dateFormat.parse();
+            Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+        } catch(Exception e) { //this generic but you can control another types of exception
+            // look the origin of excption
+        }
+        ArrayList<Tanken> tanken = new ArrayList<>();
+        tanken.add(new Tanken("2021-05-17 15:07:00+01","Aral", "Berlin", 4,1.1));
+        tanken.add(new Tanken("2021-05-17 15:07:00+01","Shell", "Hamburg", 10,1.09));
+        tanken.add(new Tanken("2021-05-17 15:07:00+01","Aral", "Frankfurt", 34,1.3));
 
         // Use a Java 8 stream to print out each tuple of the list
-        splitUpTanken.forEach(name -> log.info(String.format("Inserting Tanken record for %s %s %s", name[0], name[1], name[2])));
+        tanken.forEach(tank -> log.info("Inserting Tanken record for " + tank + ")"));
+        for(Tanken entry: tanken){
+            // Uses JdbcTemplate's update
+            jdbcTemplate.update("INSERT INTO Tanken(date, name, city, distance, price) VALUES (?,?,?,?,?)", entry.getDate(), entry.getName(), entry.getCity(), entry.getDistance(), entry.getPrice());
+        }
 
-        // Uses JdbcTemplate's batchUpdate operation to bulk load data
-        jdbcTemplate.batchUpdate("INSERT INTO Tanken(date, name, city, distance, price) VALUES (?,?,?,?,?)", splitUpTanken);
 
         log.info("Querying for Tanken all :");
         jdbcTemplate.query(
                 "SELECT * FROM Tanken;",
                 (rs, rowNum) -> new Tanken(rs.getLong("id"), rs.getString("date"), rs.getString("name"),rs.getString("city"),rs.getDouble("distance"),
                         rs.getDouble("price"))
-        ).forEach(tanken -> log.info(tanken.toString()));
+        ).forEach(tank -> log.info(tank.toString()));
     }
 
 
