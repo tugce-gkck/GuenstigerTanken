@@ -36,18 +36,18 @@ public class Application implements CommandLineRunner {
 
         log.info("Creating tables");
 
-        //jdbcTemplate.execute("DROP TABLE Tanken IF EXISTS CASCADE;");
-        /*
+        jdbcTemplate.execute("DROP TABLE Tanken;");
+
            jdbcTemplate.execute("CREATE TABLE Tanken(" +
                 "id SERIAL,"+
                 "date timestamp with time zone NOT NULL,"+
                 "name VARCHAR(255)," +
                 "city varchar(255) NOT NULL,"+
-                "distance DECIMAL(2, 0),"+
-                "price DECIMAL(2, 0)," +
+                "distance DECIMAL(2, 2),"+
+                "price DECIMAL(2, 2)," +
                 "primary key (id, date));");
 
-         */
+
 
         ArrayList<Tanken> tanken = new ArrayList<>();
         tanken.add(new Tanken("2021-05-17 15:07:00","Aral", "Berlin", 4,1.1));
