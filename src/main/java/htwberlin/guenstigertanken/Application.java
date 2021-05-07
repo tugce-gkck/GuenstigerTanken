@@ -36,7 +36,7 @@ public class Application implements CommandLineRunner {
 
         log.info("Creating tables");
 
-        //jdbcTemplate.execute("DROP TABLE Tanken;");
+        jdbcTemplate.execute("DROP TABLE Tanken;");
 
            jdbcTemplate.execute("CREATE TABLE Tanken(" +
                 "id SERIAL,"+
