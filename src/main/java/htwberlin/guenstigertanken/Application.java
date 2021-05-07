@@ -35,7 +35,7 @@ public class Application implements CommandLineRunner {
 
         log.info("Creating tables");
 
-        jdbcTemplate.execute("DROP TABLE Tanken IF EXISTS CASCADE;");
+        //jdbcTemplate.execute("DROP TABLE Tanken IF EXISTS CASCADE;");
         jdbcTemplate.execute("CREATE TABLE Tanken(" +
                 "id SERIAL,"+
                 "date timestamp with time zone NOT NULL,"+
