@@ -1,21 +1,27 @@
 package htwberlin.guenstigertanken;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
 
 
 public class Tanken {
     private long id;
-    private Timestamp date;
+    private Instant date;
     private String name, city;
     private double distance;
     private double price;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+
     public Tanken(long id,String date,String name,String city,double distance,double price){
+        this.date = LocalDateTime.parse(date,formatter)
+                .atZone(ZoneId.of("Europe/Berlin"))
+                .toInstant();
         this.id = id;
-        this.date = Timestamp.valueOf(date);
         this.name = name;
         this.city = city;
         this.distance = distance;
@@ -41,7 +47,7 @@ public class Tanken {
         return id;
     }
 
-    public Timestamp getDate() {
+    public Instant getDate() {
         return date;
     }
 
