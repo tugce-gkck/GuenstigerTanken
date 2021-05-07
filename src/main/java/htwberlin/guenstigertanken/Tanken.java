@@ -1,26 +1,25 @@
 package htwberlin.guenstigertanken;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
 public class Tanken {
     private long id;
-    private LocalDateTime date;
+    private Timestamp date;
     private String name, city;
     private double distance;
     private double price;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public Tanken(long id,String date,String name,String city,double distance,double price){
-
         this.id = id;
-        this.date = LocalDateTime.parse(date, formatter);
+        this.date = Timestamp.valueOf(date);
         this.name = name;
         this.city = city;
         this.distance = distance;
         this.price = price;
-
     }
     public Tanken(String date,String name,String city,double distance,double price){
         this(0,date,name,city,distance,price);
@@ -28,13 +27,12 @@ public class Tanken {
 
     @Override
     public String toString() {
-        String str = "Tanken[id=" + id;
-        str += ",name=" + name;
-        str += ",city=" + city;
-        str += ",distance=" + distance;
-        str += ",price=" + price;
-        str += "]" ;
-        return str;
+        return "Tanken[id=" + id +
+                     ",name=" + name +
+                     ",city=" + city +
+                     ",distance=" + distance +
+                     ",price=" + price +
+                     "]" ;
     }
 
     // getters & setters omitted for brevity
@@ -43,7 +41,7 @@ public class Tanken {
         return id;
     }
 
-    public LocalDateTime getDate() {
+    public Timestamp getDate() {
         return date;
     }
 

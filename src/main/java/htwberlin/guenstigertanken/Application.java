@@ -37,7 +37,8 @@ public class Application implements CommandLineRunner {
         log.info("Creating tables");
 
         //jdbcTemplate.execute("DROP TABLE Tanken IF EXISTS CASCADE;");
-        /* jdbcTemplate.execute("CREATE TABLE Tanken(" +
+        /*
+           jdbcTemplate.execute("CREATE TABLE Tanken(" +
                 "id SERIAL,"+
                 "date timestamp with time zone NOT NULL,"+
                 "name VARCHAR(255)," +
@@ -47,13 +48,7 @@ public class Application implements CommandLineRunner {
                 "primary key (id, date));");
 
          */
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-            Date parsedDate = dateFormat.parse();
-            Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-        } catch(Exception e) { //this generic but you can control another types of exception
-            // look the origin of excption
-        }
+
         ArrayList<Tanken> tanken = new ArrayList<>();
         tanken.add(new Tanken("2021-05-17 15:07:00+01","Aral", "Berlin", 4,1.1));
         tanken.add(new Tanken("2021-05-17 15:07:00+01","Shell", "Hamburg", 10,1.09));
