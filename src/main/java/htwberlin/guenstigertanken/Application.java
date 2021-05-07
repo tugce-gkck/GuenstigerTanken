@@ -49,7 +49,7 @@ public class Application implements CommandLineRunner {
 
         // Split up the array of whole names into an array of first/last names
         List<Object[]> splitUpTanken = Arrays.asList("2021-05-17 15:07:00+01,Aral,Berlin,4,1.1", "2021-05-17 15:07:00+01,Shell,Hamburg,10,1.0", "2021-05-17 15:07:00+01,Aral,Frankfurt,30,1.6").stream()
-                .map(name -> name.split(" "))
+                .map(name -> name.split(","))
                 .collect(Collectors.toList());
 
         // Use a Java 8 stream to print out each tuple of the list
