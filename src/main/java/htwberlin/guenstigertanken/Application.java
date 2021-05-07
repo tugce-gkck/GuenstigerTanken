@@ -51,7 +51,7 @@ public class Application implements CommandLineRunner {
 
         ArrayList<Tanken> tanken = new ArrayList<>();
         tanken.add(new Tanken("2021-05-17 15:07:00","Aral", "Berlin", 4,1.1));
-        tanken.add(new Tanken("2021-05-17 15:07:00","Shell", "Hamburg", 10,1.09));
+        tanken.add(new Tanken("2021-05-17 15:07:00","Shell", "Hamburg", 10.2,1.09));
         tanken.add(new Tanken("2021-05-17 15:07:00","Aral", "Frankfurt", 34,1.3));
 
         // Use a Java 8 stream to print out each tuple of the list
