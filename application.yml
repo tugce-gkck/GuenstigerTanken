@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: postgres://vsnfjliawdlnbr:a607d9ccba4b217e4ed70b6e43d3d10254ad5b94af4ac21dd0261393d0292e3a@ec2-52-50-171-4.eu-west-1.compute.amazonaws.com:5432/d9l780lk6mhk0k
+    username: vsnfjliawdlnbr
+    password: a607d9ccba4b217e4ed70b6e43d3d10254ad5b94af4ac21dd0261393d0292e3a
