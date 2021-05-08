@@ -1,34 +1,46 @@
 package htwberlin.guenstigertanken;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class GuenstigertankenController {
+	private final List<Tanken> tanken;
+
+	public GuenstigertankenController(List<Tanken> tanken){
+		this.tanken = tanken;
+	}
+	public GuenstigertankenController(){
+		this.tanken = new ArrayList<>(new Tanken(1,"2021-05-17 15:07:00","aral", "Heilbronn",10.5,1.7));
+	}
 
 	@RequestMapping("/")
 	public String hello() {
 		return "Hello World!";
 	}
 
-	@RequestMapping("/getTanken")
-	public String getTanken() {
-		return "GetTanken!";
+	@GetMapping("/tanken")
+	public List<Tanken> getTanken() {
+		return tanken;
 	}
 
-	@RequestMapping("/addTanken")
-	public String addTanken() {
-		return "addTanken!";
+	@PostMapping("/tanken")
+	Tanken newTanken(@RequestBody Tanken newTanken) {
+		tanken.add(newTanken);
+		return newTanken;
 	}
 
-	@RequestMapping("/deleteTanken")
-	public String deleteTanken() {
-		return "DeleteTanken!";
+	@GetMapping("/tanken/{id}")
+	Tanken one(@PathVariable Long id) {
+
+		return tanken.get(0);
 	}
 
-	@RequestMapping("/updateTanken")
-	public String updateTanken() {
-		return "Update Tanken!";
+	@DeleteMapping("/tanken/{id}")
+	void deleteEmployee(@PathVariable Long id) {
+
 	}
 }
 
