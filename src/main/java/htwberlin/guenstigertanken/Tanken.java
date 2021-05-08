@@ -44,7 +44,7 @@ public class Tanken {
         return id;
     }
 
-    public Instant getDate() {
+    public Timestamp getDate() {
         return date;
     }
 

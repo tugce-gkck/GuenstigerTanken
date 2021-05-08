@@ -10,6 +10,26 @@ public class GuenstigertankenController {
 	public String hello() {
 		return "Hello World!";
 	}
+
+	@RequestMapping("/getTanken")
+	public String getTanken() {
+		return "GetTanken!";
+	}
+
+	@RequestMapping("/addTanken")
+	public String addTanken() {
+		return "addTanken!";
+	}
+
+	@RequestMapping("/deleteTanken")
+	public String deleteTanken() {
+		return "DeleteTanken!";
+	}
+
+	@RequestMapping("/updateTanken")
+	public String updateTanken() {
+		return "Update Tanken!";
+	}
 }
 
 
