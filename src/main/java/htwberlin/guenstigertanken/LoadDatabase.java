@@ -18,7 +18,7 @@ class LoadDatabase {
     JdbcTemplate jdbcTemplate;
 
     @Bean
-    CommandLineRunner initDatabase(List<Tanken> tanken) {
+    CommandLineRunner initDatabase(List<Tanken> newTanken) {
 
         log.info("Creating tables");
 
@@ -56,8 +56,8 @@ class LoadDatabase {
         ).forEach(tank -> log.info(tank.toString()));
 
         return args -> {
-            log.info("Preloading " + tanken.add(new Tanken("2021-05-17 15:07:00", "Aral", "Berlin", 4, 1.1)));
-            log.info("Preloading " + tanken.add(new Tanken("2021-05-17 15:07:00", "Shell", "Potsdam", 6, 1.2)));
+            log.info("Preloading " + newTanken.add(new Tanken("2021-05-17 15:07:00", "Aral", "Berlin", 4, 1.1)));
+            log.info("Preloading " + newTanken.add(new Tanken("2021-05-17 15:07:00", "Shell", "Potsdam", 6, 1.2)));
         };
     }
 }
