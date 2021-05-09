@@ -7,7 +7,6 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.TimeZone;
 
-
 public class Tanken {
     private long id;
     private Timestamp date;

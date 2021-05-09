@@ -48,14 +48,14 @@ class LoadDatabase {
             jdbcTemplate.update("INSERT INTO Tanken(date, name, city, distance, price) VALUES (?,?,?,?,?)", entry.getDate(), entry.getName(), entry.getCity(), entry.getDistance(), entry.getPrice());
         }
 
-
+/*
         log.info("Querying for Tanken all :");
         jdbcTemplate.query(
                 "SELECT * FROM Tanken;",
                 (rs, rowNum) -> new Tanken(rs.getLong("id"), rs.getString("date"), rs.getString("name"),rs.getString("city"),rs.getDouble("distance"),
                         rs.getDouble("price"))
         ).forEach(tank -> log.info(tank.toString()));
-
+*/
         return args -> {
             log.info("Preloading " + newTanken.add(new Tanken("2021-05-17 15:07:00", "Aral", "Berlin", 4, 1.1)));
             log.info("Preloading " + newTanken.add(new Tanken("2021-05-17 15:07:00", "Shell", "Potsdam", 6, 1.2)));

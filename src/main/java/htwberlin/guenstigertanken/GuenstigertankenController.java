@@ -16,16 +16,13 @@ public class GuenstigertankenController {
 		this.tanken = new ArrayList<Tanken>();
 		this.tanken.add(new Tanken(1,"2021-05-17 15:07:00","aral", "Heilbronn",10.5,1.7));
 	}
-
-	@RequestMapping("/")
-	public String hello() {
-		return "Hello World!";
-	}
-
+	// Aggregate root
+	// tag::get-aggregate-root[]
 	@GetMapping("/tanken")
-	public List<Tanken> getTanken() {
+	public List<Tanken> all() {
 		return tanken;
 	}
+	// end::get-aggregate-root[]
 
 	@PostMapping("/tanken")
 	Tanken newTanken(@RequestBody Tanken newTanken) {
