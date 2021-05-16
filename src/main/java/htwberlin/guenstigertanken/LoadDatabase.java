@@ -39,9 +39,9 @@ class LoadDatabase {
     }
 
     public List<Tanken> readAll(){
-
-        return jdbcTemplate.query(
+        List<Tanken> all = jdbcTemplate.query(
                 "SELECT * FROM Tanken;",
                 new TankenRowMapper());
+        return all;
     }
 }
