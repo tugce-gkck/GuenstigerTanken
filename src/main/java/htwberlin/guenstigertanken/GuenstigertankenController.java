@@ -13,7 +13,7 @@ public class GuenstigertankenController {
 		this.tanken = tanken;
 	}
 	public GuenstigertankenController(){
-		this.tanken = new ArrayList<Tanken>();
+		this.tanken = new LoadDatabase().readAll();
 		this.tanken.add(new Tanken(1,"2021-05-17 15:07:00","Aral", "Heilbronn",10.5,1.7));
 	}
 	@GetMapping("/")
