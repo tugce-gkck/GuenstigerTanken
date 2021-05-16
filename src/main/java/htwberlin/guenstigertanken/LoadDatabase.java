@@ -39,12 +39,9 @@ class LoadDatabase {
     }
 
     public List<Tanken> readAll(){
-        List<Tanken> all = new ArrayList<>();
-        jdbcTemplate.query(
+
+        return jdbcTemplate.query(
                 "SELECT * FROM Tanken;",
-                (rs, rowNum) -> all.add(new Tanken(rs.getLong("id"), rs.getString("date"), rs.getString("name"),rs.getString("city"),rs.getDouble("distance"),
-                        rs.getDouble("price")))
-        );
-        return all;
+                new TankenRowMapper());
     }
 }

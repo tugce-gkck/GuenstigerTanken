@@ -14,7 +14,9 @@ public class Tanken {
     private double distance;
     private double price;
 
+    public Tanken(){
 
+    }
     public Tanken(long id,String date,String name,String city,double distance,double price){
         this.date = Timestamp.valueOf(date);
         this.id = id;
@@ -61,5 +63,29 @@ public class Tanken {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
