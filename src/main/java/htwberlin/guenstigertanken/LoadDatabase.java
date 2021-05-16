@@ -2,10 +2,8 @@ package htwberlin.guenstigertanken;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import java.util.ArrayList;
-import java.util.List;
 
-import java.sql.Timestamp;
+import Java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
