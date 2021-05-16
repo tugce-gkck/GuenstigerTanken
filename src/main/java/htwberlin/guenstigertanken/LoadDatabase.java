@@ -3,7 +3,7 @@ package htwberlin.guenstigertanken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import Java.sql.Timestamp;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
