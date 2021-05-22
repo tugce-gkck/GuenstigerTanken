@@ -9,7 +9,7 @@ public class GuenstigertankenController {
 	private List<Tanken> tanken;
 
 	public GuenstigertankenController(){
-		this.tanken = (new LoadDatabase()).readAll();
+		this.tanken = (new DatabaseSeeder()).readAll();
 	}
 	@GetMapping("/")
 	public String hello() {

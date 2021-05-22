@@ -1,15 +1,18 @@
 package htwberlin.guenstigertanken;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@SpringBootApplication
-class LoadDatabase {
+@Component
+class DatabaseSeeder {
+    Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -41,8 +44,15 @@ class LoadDatabase {
     }
 
     public List<Tanken> readAll(){
-        List<Tanken> all = jdbcTemplate.query("SELECT * FROM Tanken;",
-                new TankenRowMapper());
+        logger.info("Before reading everything!");
+        List<Tanken> all = new ArrayList<>();
+        try{
+            all = jdbcTemplate.query("SELECT * FROM Tanken;",
+                    new TankenRowMapper());
+        }catch (Exception e){
+            logger.error("Error while reading Tanken all!");
+            logger.error(e.getMessage());
+        }
 
         return all;
     }
