@@ -59,7 +59,7 @@ class LoadDatabase {
         try{
             all = jdbcTemplate.query(
                     "SELECT * FROM Tanken",
-                    (rs, rowNum) -> new Tanken(rs.getLong("id"), rs.getTimestamp("date"), rs.getString("name"), rs.getString("city"), rs.getDouble("distance"), rs.getDouble("price"))
+                    (rs, rowNum) -> new Tanken(rs.getLong("ID"), rs.getTimestamp("DATE"), rs.getString("NAME"), rs.getString("CITY"), rs.getDouble("DISTANCE"), rs.getDouble("PRICE"))
             );
             all.forEach(tanken -> logger.info(tanken.toString()));
         }catch (Exception e){
