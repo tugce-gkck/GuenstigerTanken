@@ -1,8 +1,15 @@
 package htwberlin.guenstigertanken;
 
 import java.sql.Timestamp;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Tanken {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private Timestamp date;
     private String name, city;

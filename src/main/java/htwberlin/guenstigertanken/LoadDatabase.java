@@ -3,21 +3,24 @@ package htwberlin.guenstigertanken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Component
-class DatabaseSeeder {
-    Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
+@Configuration
+class LoadDatabase {
+
+    Logger logger = LoggerFactory.getLogger(LoadDatabase.class);
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public void initDatabase() {
+    public void reCreate() {
 
 
         jdbcTemplate.execute("DROP TABLE Tanken;");
@@ -41,6 +44,13 @@ class DatabaseSeeder {
             jdbcTemplate.update("INSERT INTO Tanken(date, name, city, distance, price) VALUES (?,?,?,?,?)", entry.getDate(), entry.getName(), entry.getCity(), entry.getDistance(), entry.getPrice());
         }
 
+    }
+    @Bean
+    CommandLineRunner initDatabase(TankenRepository repository) {
+
+        return args -> {
+            logger.info("Preloading " + repository.save(new Tanken("2021-05-17 15:07:00","Aral", "Berlin", 4,1.1)));
+        };
     }
 
     public List<Tanken> readAll(){
