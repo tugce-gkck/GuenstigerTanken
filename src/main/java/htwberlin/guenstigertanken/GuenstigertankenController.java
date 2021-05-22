@@ -15,7 +15,7 @@ public class GuenstigertankenController {
 	}
 	@GetMapping("/")
 	public String showAll(Model model) {
-		model.addAttribute("name","Ramazan");
+		model.addAttribute("name","Kunde");
 		model.addAttribute("tanken", repository.findAll());
 		return "index";
 	}
