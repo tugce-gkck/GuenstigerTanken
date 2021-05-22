@@ -39,9 +39,13 @@ class LoadDatabase {
     }
 
     public List<Tanken> readAll(){
-        List<Tanken> all = jdbcTemplate.query(
+        List<Tanken> all = new ArrayList<>();
+        all.add(new Tanken("2021-05-17 15:07:00","Aral", "Berlin", 4,1.1));
+        /*List<Tanken> all = jdbcTemplate.query(
                 "SELECT * FROM Tanken;",
                 new TankenRowMapper());
+
+         */
         return all;
     }
 }
