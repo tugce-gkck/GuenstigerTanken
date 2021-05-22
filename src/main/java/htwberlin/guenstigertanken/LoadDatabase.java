@@ -1,12 +1,14 @@
 package htwberlin.guenstigertanken;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+@SpringBootApplication
 class LoadDatabase {
 
     @Autowired

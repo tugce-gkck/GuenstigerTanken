@@ -6,7 +6,7 @@ import java.util.List;
 
 @RestController
 public class GuenstigertankenController {
-	private final List<Tanken> tanken;
+	private List<Tanken> tanken;
 
 	public GuenstigertankenController(){
 		this.tanken = (new LoadDatabase()).readAll();
