@@ -11,11 +11,14 @@ public class TankenRowMapper implements RowMapper<Tanken> {
 
         Tanken tanken = new Tanken();
         tanken.setId(rs.getLong("id"));
+        /*
         tanken.setDate(rs.getTimestamp("date"));
         tanken.setName(rs.getString("name"));
         tanken.setCity(rs.getString("city"));
         tanken.setDistance(rs.getDouble("distance"));
         tanken.setPrice(rs.getDouble("price"));
+
+         */
 
         return tanken;
 
