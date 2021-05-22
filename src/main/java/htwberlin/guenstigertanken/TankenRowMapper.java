@@ -10,8 +10,8 @@ public class TankenRowMapper implements RowMapper<Tanken> {
     public Tanken mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         Tanken tanken = new Tanken();
-        tanken.setId(rs.getLong("id"));
-        /*
+        /*tanken.setId(rs.getLong("id"));
+
         tanken.setDate(rs.getTimestamp("date"));
         tanken.setName(rs.getString("name"));
         tanken.setCity(rs.getString("city"));
