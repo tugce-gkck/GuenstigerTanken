@@ -14,8 +14,8 @@ public class GuenstigertankenController {
 		this.repository = repository;
 	}
 	@GetMapping("/")
-	public String index(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
+	public String index( Model model) {
+		model.addAttribute("name", "Ramazan");
 		return "index";
 	}
 
