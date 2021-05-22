@@ -23,6 +23,17 @@ public class Tanken {
     public Tanken(String date,String name,String city,double distance,double price){
         this(0,date,name,city,distance,price);
     }
+    public Tanken(long id,Timestamp date,String name,String city,double distance,double price){
+        this.date = date;
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.distance = distance;
+        this.price = price;
+    }
+    public Tanken(Timestamp date,String name,String city,double distance,double price){
+        this(0,date,name,city,distance,price);
+    }
 
     @Override
     public String toString() {

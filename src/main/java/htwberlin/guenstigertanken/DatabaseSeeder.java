@@ -47,8 +47,11 @@ class DatabaseSeeder {
         logger.info("Before reading everything!");
         List<Tanken> all = new ArrayList<>();
         try{
-            all = jdbcTemplate.query("SELECT * FROM Tanken;",
-                    new TankenRowMapper());
+            all = jdbcTemplate.query(
+                    "SELECT * FROM Tanken",
+                    (rs, rowNum) -> new Tanken(rs.getLong("id"), rs.getTimestamp("date"), rs.getString("name"), rs.getString("city"), rs.getDouble("distance"), rs.getDouble("price"))
+            );
+            all.forEach(tanken -> logger.info(tanken.toString()));
         }catch (Exception e){
             logger.error("Error while reading Tanken all!");
             logger.error(e.getMessage());
