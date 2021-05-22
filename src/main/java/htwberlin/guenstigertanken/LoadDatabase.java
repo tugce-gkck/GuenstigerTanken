@@ -47,9 +47,9 @@ class LoadDatabase {
     }
     @Bean
     CommandLineRunner initDatabase(TankenRepository repository) {
-
+        logger.info("Called initDatabase CommanLineRunner");
         return args -> {
-            logger.info("Preloading " + repository.save(new Tanken("2021-05-17 15:07:00","Aral", "Berlin", 4,1.1)));
+            logger.info("Preloading " + repository.save(new Tanken("2021-05-17 15:08:00","Aral", "Berlin", 4,1.1)));
         };
     }
 
