@@ -1,11 +1,12 @@
 package htwberlin.guenstigertanken;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class GuenstigertankenController {
 	private final TankenRepository repository;
 
