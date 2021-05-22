@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Tanken")
 public class Tanken {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
