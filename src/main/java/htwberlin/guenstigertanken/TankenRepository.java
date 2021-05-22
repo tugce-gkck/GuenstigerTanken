@@ -1,13 +1,7 @@
 package htwberlin.guenstigertanken;
 
-import java.sql.Timestamp;
-import java.util.List;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TankenRepository extends CrudRepository<Tanken, Long> {
+interface TankenRepository extends JpaRepository<Tanken, Long> {
 
-    List<Tanken> findByDate(Timestamp ts);
-    List<Tanken> findByName(String name);
-
-    Tanken findById(long id);
 }
