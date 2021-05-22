@@ -1,5 +1,6 @@
 package htwberlin.guenstigertanken;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,8 +13,9 @@ public class GuenstigertankenController {
 		this.repository = repository;
 	}
 	@GetMapping("/")
-	public String hello() {
-		return "Herzlich Willkommen bei Günstiger Tanken";
+	public String hello(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "greeting";
 	}
 
 	// Aggregate root
