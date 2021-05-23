@@ -9,6 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,26 +49,23 @@ class LoadDatabase {
     }
     @Bean
     CommandLineRunner initDatabase(TankenRepository repository) {
-        logger.info("Called initDatabase CommanLineRunner");
+        repository.deleteAll();
+        Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
+        repository.save(new Tanken(ts,"Total", "Berlin", 4,1.01));
+        repository.save(new Tanken(ts,"Shell", "Berlin", 5,1.50));
+        repository.save(new Tanken(ts,"Esso", "Berlin", 4.7,1.18));
+        repository.save(new Tanken(ts,"Total", "Hamburg", 52,1.22));
+        repository.save(new Tanken(ts,"Aral", "Hamburg", 53.9,1.11));
+        repository.save(new Tanken(ts,"Agip", "Hamburg", 52.6,1.32));
+        repository.save(new Tanken(ts,"Total", "Dresden", 75.3,1.91));
+        repository.save(new Tanken(ts,"Aral", "Dresden", 74.2,1.64));
+        repository.save(new Tanken(ts,"Aral", "Frankfurt", 135.7,1.71));
+        repository.save(new Tanken(ts,"Esso", "München", 130.5,1.01));
+        repository.save(new Tanken(ts,"Total", "München", 132.6,1.12));
+        repository.save(new Tanken(ts,"Aral", "München", 133.9,1.00));
+        repository.save(new Tanken(ts,"Shell", "München", 140,1.80));
         return args -> {
-            //logger.info("Preloading " + repository.save(new Tanken("2021-05-17 15:08:00","Aral", "Berlin", 4,1.1)));
         };
     }
 
-    public List<Tanken> readAll(){
-        logger.info("Before reading everything!");
-        List<Tanken> all = new ArrayList<>();
-        try{
-            all = jdbcTemplate.query(
-                    "SELECT * FROM Tanken",
-                    (rs, rowNum) -> new Tanken(rs.getLong("ID"), rs.getTimestamp("DATE"), rs.getString("NAME"), rs.getString("CITY"), rs.getDouble("DISTANCE"), rs.getDouble("PRICE"))
-            );
-            all.forEach(tanken -> logger.info(tanken.toString()));
-        }catch (Exception e){
-            logger.error("Error while reading Tanken all!");
-            logger.error(e.getMessage());
-        }
-
-        return all;
-    }
 }
