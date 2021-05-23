@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -15,7 +17,9 @@ public class GuenstigertankenController {
 	}
 	@GetMapping("/")
 	public String showAll(Model model) {
-		model.addAttribute("name","Kunde");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+
+		model.addAttribute("now",dtf.format(LocalDateTime.now()));
 		model.addAttribute("tanken", repository.findAll());
 		return "index";
 	}

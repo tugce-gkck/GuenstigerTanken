@@ -1,12 +1,39 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Günstiger Tanken App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+    h1 { color: #ffffff; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+        #tanken {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tanken td, #tanken th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tanken tr:nth-child(even){background-color: #f2f2f2;}
+
+#tanken tr:hover {background-color: #ddd;}
+
+#tanken th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+    </style>
 </head>
 <body>
-<p th:text="'Hallo, ' + ${name} + '!'" />
-<table>
+<h1>Günstiger Tanken App</h1>
+<hr>
+<p th:text="'Zuletzt aktualisiert: ' + ${now} + ' Uhr'"></p>
+<table id="tanken">
     <thead>
     <tr>
         <th> Name </th>
@@ -24,8 +51,8 @@
         <td><span th:text="${tank.name}"> Name </span></td>
         <td><span th:text="${tank.date}"> Datum </span></td>
         <td><span th:text="${tank.city}"> Stadt </span></td>
-        <td><span th:text="${tank.price}"> Preis </span></td>
-        <td><span th:text="${tank.distance}"> Distanz </span></td>
+        <td><span th:text="${tank.price} + ' €'"> Preis </span></td>
+        <td><span th:text="${tank.distance}+ ' km'"> Distanz </span></td>
     </tr>
     </tbody>
 </table>
