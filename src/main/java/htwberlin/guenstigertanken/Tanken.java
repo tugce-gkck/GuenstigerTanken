@@ -19,31 +19,43 @@ public class Tanken {
     private double distance;
     @Column(name="price")
     private double price;
+    @Column(name="wc")
+    private boolean wc;
+    @Column(name="restaurant")
+    private boolean restaurant;
+    @Column(name="carwash")
+    private boolean carwash;
 
     public Tanken(){
 
     }
-    public Tanken(long id,String date,String name,String city,double distance,double price){
+    public Tanken(long id,String date,String name,String city,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
         this.date = Timestamp.valueOf(date);
         this.id = id;
         this.name = name;
         this.city = city;
         this.distance = distance;
         this.price = price;
+        this.wc = wc;
+        this.restaurant = restaurant;
+        this.carwash = carwash;
     }
-    public Tanken(String date,String name,String city,double distance,double price){
-        this(0,date,name,city,distance,price);
+    public Tanken(String date,String name,String city,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
+        this(0,date,name,city,distance,price,wc,restaurant,carwash);
     }
-    public Tanken(long id,Timestamp date,String name,String city,double distance,double price){
+    public Tanken(long id,Timestamp date,String name,String city,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
         this.date = date;
         this.id = id;
         this.name = name;
         this.city = city;
         this.distance = distance;
         this.price = price;
+        this.wc = wc;
+        this.restaurant = restaurant;
+        this.carwash = carwash;
     }
-    public Tanken(Timestamp date,String name,String city,double distance,double price){
-        this(0,date,name,city,distance,price);
+    public Tanken(Timestamp date,String name,String city,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
+        this(0,date,name,city,distance,price,wc,restaurant,carwash);
     }
 
     @Override
@@ -53,10 +65,37 @@ public class Tanken {
                      ",city=" + city +
                      ",distance=" + distance +
                      ",price=" + price +
+                     ",wc=" + wc +
+                     ",restaurant=" + restaurant +
+                     ",carwash=" + carwash +
                      "]" ;
     }
 
     // getters & setters omitted for brevity
+
+    public boolean isWc() {
+        return wc;
+    }
+
+    public void setWc(boolean wc) {
+        this.wc = wc;
+    }
+
+    public boolean isRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(boolean restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public boolean isCarwash() {
+        return carwash;
+    }
+
+    public void setCarwash(boolean carwash) {
+        this.carwash = carwash;
+    }
 
     public long getId() {
         return id;

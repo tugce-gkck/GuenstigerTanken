@@ -13,6 +13,8 @@ public class GuenstigertankenController {
 	private final TankenRepository repository;
 
 	public GuenstigertankenController(TankenRepository repository){
+		LoadDatabase ld = new LoadDatabase();
+		ld.reCreate();
 		this.repository = repository;
 	}
 	@GetMapping("/")
@@ -55,6 +57,9 @@ public class GuenstigertankenController {
 					tanken.setCity(newTanken.getCity());
 					tanken.setDistance(newTanken.getDistance());
 					tanken.setPrice(newTanken.getPrice());
+					tanken.setWc(newTanken.isWc());
+					tanken.setRestaurant(newTanken.isRestaurant());
+					tanken.setCarwash(newTanken.isCarwash());
 					return repository.save(tanken);
 				})
 				.orElseGet(() -> {

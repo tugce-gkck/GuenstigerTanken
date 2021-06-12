@@ -52,9 +52,9 @@
         <td colspan="2">Keine Tankstellen verfügbar</td>
     </tr>
     <tr th:each="tank : ${tanken}">
-        <td><span th:text="${tank.id}"> Name </span></td>
-        <td><span th:text="${tank.date}"> Name </span></td>
-        <td><span th:text="${tank.name}"> Datum </span></td>
+        <td><span th:text="${tank.id}"> ID </span></td>
+        <td><span th:text="${tank.date}"> Datum </span></td>
+        <td><span th:text="${tank.name}"> Name </span></td>
         <td><span th:text="${tank.city}"> Stadt </span></td>
         <td><span th:text="${tank.price} + ' €'"> Preis </span></td>
         <td><span th:text="${tank.distance}+ ' km'"> Distanz </span></td>
