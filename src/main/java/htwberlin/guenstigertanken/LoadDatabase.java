@@ -52,9 +52,22 @@ class LoadDatabase {
     }
     @Bean
     CommandLineRunner initDatabase(TankenRepository repository) {
-        repository.deleteAll();
+        jdbcTemplate.execute("DROP TABLE Tanken;");
+
+        jdbcTemplate.execute("CREATE TABLE Tanken(" +
+                "id SERIAL,"+
+                "date timestamp with time zone NOT NULL,"+
+                "name VARCHAR(255)," +
+                "city varchar(255) NOT NULL,"+
+                "distance DECIMAL(15,2),"+
+                "price DECIMAL(15,2)," +
+                "wc BOOLEAN," +
+                "restaurant BOOLEAN," +
+                "carwash BOOLEAN," +
+                "primary key (id, date));");
+        /*repository.deleteAll();
         Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
-        /*repository.save(new Tanken(ts,"Total", "Berlin", 4,1.01,true,true,true));
+        repository.save(new Tanken(ts,"Total", "Berlin", 4,1.01,true,true,true));
         repository.save(new Tanken(ts,"Shell", "Berlin", 5,1.50,true,false,false));
         repository.save(new Tanken(ts,"Esso", "Berlin", 4.7,1.18,true,false,true));
         repository.save(new Tanken(ts,"Total", "Hamburg", 52,1.22,true,true,false));

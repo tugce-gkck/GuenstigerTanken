@@ -13,8 +13,6 @@ public class GuenstigertankenController {
 	private final TankenRepository repository;
 
 	public GuenstigertankenController(TankenRepository repository){
-		LoadDatabase ld = new LoadDatabase();
-		ld.reCreate();
 		this.repository = repository;
 	}
 	@GetMapping("/")
