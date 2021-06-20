@@ -49,14 +49,8 @@
                 <button type="button" class="btn btn-link">Reset Password</button>-->
             </form></div>`
     });
-
-    var app = new Vue({
-        el: '#contents',
-        data: {
-        },
-        methods: {
-            loginToApp: () => {
-                var username = document.getElementById("inputUsername").value;
+    function loginToApp(){
+    var username = document.getElementById("inputUsername").value;
                 var password = document.getElementById("inputPassword").value;
                 if(username === "tugce" && password === "passwort")
                 {
@@ -65,8 +59,13 @@
                 } else{
                     document.getElementById("errorLogin").style.visibility = "visible";
                 }
+    };
+    var app = new Vue({
+        el: '#contents',
+        data: {
+        },
+        methods: {
 
-            }
         }
     });
 
