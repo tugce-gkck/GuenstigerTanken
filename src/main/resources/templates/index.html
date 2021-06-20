@@ -16,8 +16,7 @@
 <div class="back">
     <div class="div-center">
         <div id="contents">
-            <login-new
-                    v-bind:login="login" v-bind:key="login.id">
+            <login-new>
             </login-new>
         </div>
         </span>
@@ -34,7 +33,7 @@
 <script type="text/babel">
 
     Vue.component('login-new', {
-        props: ['login'],
+        props: [],
         template: `<h3>Login</h3>
             <hr />
             <form>
@@ -58,9 +57,7 @@
     }
 
     var app = new Vue({
-        el: '#contents',
-        data: { id: "1", username: "tugce", password: "passwort"
-        }
+        el: '#contents'
     });
 
 </script>
