@@ -45,7 +45,7 @@
                     <label for="inputPassword">Passwort</label>
                     <input type="password" class="form-control" id="inputPassword" placeholder="Passwort">
                 </div>
-                <button v-on:click="login" type="submit" class="btn btn-primary">Login</button>
+                <button v-on:click="loginToApp" type="submit" class="btn btn-primary">Login</button>
                 <span style="visibility: hidden" id="errorLogin" class="label label-danger">Falsche Login-Daten!</span>
                 <hr />
                 <!--<button type="button" class="btn btn-link">Signup</button>
@@ -58,7 +58,7 @@
         data: {
         },
         methods: {
-            login: function(event){
+            loginToApp: function(event){
                 var username = document.getElementById("inputUsername").value;
                 var password = document.getElementById("inputPassword").value;
                 if(username === "tugce" && password === "passwort")
