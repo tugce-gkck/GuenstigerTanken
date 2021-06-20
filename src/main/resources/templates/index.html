@@ -36,13 +36,13 @@
             <form>
                 <div class="form-group">
                     <label for="inputUsername">Benutzername</label>
-                    <input type="username" id="inputUsername" placeholder="Benutzername">
+                    <input type="username" class="form-control" id="inputUsername" placeholder="Benutzername">
                 </div>
                 <div class="form-group">
                     <label for="inputPassword">Passwort</label>
-                    <input type="password"id="inputPassword" placeholder="Passwort">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Passwort">
                 </div>
-                <button @click.native="loginToApp($event)" class="btn btn-primary">Login</button>
+                <button onclick="loginToApp();" class="btn btn-primary">Login</button>
                 <span style="visibility: hidden" id="errorLogin" class="label label-danger">Falsche Login-Daten!</span>
                 <hr />
                 <!--<button type="button" class="btn btn-link">Signup</button>
