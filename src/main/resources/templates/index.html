@@ -45,6 +45,9 @@
         <th> Stadt </th>
         <th> Preis </th>
         <th> Distanz </th>
+        <th> WC </th>
+        <th> Restaurant </th>
+        <th> Autowäsche </th>
     </tr>
     </thead>
     <tbody>
@@ -58,6 +61,9 @@
         <td><span th:text="${tank.city}"> Stadt </span></td>
         <td><span th:text="${tank.price} + ' €'"> Preis </span></td>
         <td><span th:text="${tank.distance}+ ' km'"> Distanz </span></td>
+        <td><span th:text="${tank.wc}"> WC </span></td>
+        <td><span th:text="${tank.restaurant}"> Restaurant </span></td>
+        <td><span th:text="${tank.carwash}"> Autowäsche </span></td>
     </tr>
     </tbody>
 </table>
