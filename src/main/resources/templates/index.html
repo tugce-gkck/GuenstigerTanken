@@ -45,19 +45,32 @@
                     <label for="inputPassword">Passwort</label>
                     <input type="password" class="form-control" id="inputPassword" placeholder="Passwort">
                 </div>
-                <button onclick="myFunction()" type="submit" class="btn btn-primary">Login</button>
+                <button v-on:click="login" type="submit" class="btn btn-primary">Login</button>
+                <span style="visibility: hidden" id="errorLogin" class="label label-danger">Falsche Login-Daten!</span>
                 <hr />
                 <!--<button type="button" class="btn btn-link">Signup</button>
                 <button type="button" class="btn btn-link">Reset Password</button>-->
             </form></div>`
     });
 
-    function myFunction() {
-        location.href = "/main";
-    }
-
     var app = new Vue({
-        el: '#contents'
+        el: '#contents',
+        data: {
+        },
+        methods: {
+            login: function(event){
+                var username = document.getElementById("inputUsername").value;
+                var password = document.getElementById("inputPassword").value;
+                if(username === "tugce" && password === "passwort")
+                {
+                    document.getElementById("errorLogin").style.visibility = "hidden";
+                    window.open("/main");
+                } else{
+                    document.getElementById("errorLogin").style.visibility = "visible";
+                }
+
+            }
+        }
     });
 
 </script>
