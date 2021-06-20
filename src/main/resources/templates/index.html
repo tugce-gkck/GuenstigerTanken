@@ -50,21 +50,7 @@
             </form></div>`
     });
 
-    const signupForm = document.getElementById("loginForm");
-    signupForm.addEventListener('submit', processLogin);
-    function processLogin(e){
-        e.preventDefault();
-        var username = document.getElementById("inputUsername").value;
-                var password = document.getElementById("inputPassword").value;
-                if(username === "tugce" && password === "passwort")
-                {
-                    document.getElementById("errorLogin").style.visibility = "hidden";
-                    window.open("/main");
-                } else{
-                    document.getElementById("errorLogin").style.visibility = "visible";
-                }
 
-    }
 
     var app = new Vue({
         el: '#contents',
@@ -73,6 +59,20 @@
         methods: {
 
         }
+    });
+
+    document.getElementById("loginForm").addEventListener('submit', function(evt){
+        evt.preventDefault();
+        var username = document.getElementById("inputUsername").value;
+        var password = document.getElementById("inputPassword").value;
+         if(username === "tugce" && password === "passwort")
+         {
+             document.getElementById("errorLogin").style.visibility = "hidden";
+             window.open("/main");
+         } else{
+              document.getElementById("errorLogin").style.visibility = "visible";
+         }
+
     });
 
 </script>
