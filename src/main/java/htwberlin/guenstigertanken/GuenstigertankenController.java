@@ -27,7 +27,7 @@ public class GuenstigertankenController {
 
 		model.addAttribute("now",dtf.format(LocalDateTime.now()));
 		model.addAttribute("tanken", repository.findAll());
-		return "index";
+		return "main";
 	}
 
 	// Aggregate root
