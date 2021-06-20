@@ -33,7 +33,7 @@
         props: [],
         template: `<div class="div-center"><h3>Login</h3>
             <hr />
-            <form>
+            <form id="loginForm">
                 <div class="form-group">
                     <label for="inputUsername">Benutzername</label>
                     <input type="username" class="form-control" id="inputUsername" placeholder="Benutzername">
@@ -42,7 +42,7 @@
                     <label for="inputPassword">Passwort</label>
                     <input type="password" class="form-control" id="inputPassword" placeholder="Passwort">
                 </div>
-               <button v-on:click.native="loginToApp()">Login</button>
+               <button type="submit">Login</button>
                 <span style="visibility: hidden" id="errorLogin" class="label label-danger">Falsche Login-Daten!</span>
                 <hr />
                 <!--<button type="button" class="btn btn-link">Signup</button>
@@ -50,13 +50,11 @@
             </form></div>`
     });
 
-    var app = new Vue({
-        el: '#contents',
-        data: {
-        },
-        methods: {
-            loginToApp: function(){
-                var username = document.getElementById("inputUsername").value;
+    const signupForm = document.getElementById('loginForm');
+    signupForm.addEventListener('submit', processLogin);
+    function processLogin(e){
+        e.preventDefault();
+        var username = document.getElementById("inputUsername").value;
                 var password = document.getElementById("inputPassword").value;
                 if(username === "tugce" && password === "passwort")
                 {
@@ -65,7 +63,15 @@
                 } else{
                     document.getElementById("errorLogin").style.visibility = "visible";
                 }
-            }
+
+    }
+
+    var app = new Vue({
+        el: '#contents',
+        data: {
+        },
+        methods: {
+
         }
     });
 
