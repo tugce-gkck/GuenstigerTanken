@@ -16,6 +16,12 @@ public class GuenstigertankenController {
 		this.repository = repository;
 	}
 	@GetMapping("/")
+	public String loginPage(Model model) {
+
+		return "index";
+	}
+
+	@GetMapping("/main")
 	public String showAll(Model model) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
 

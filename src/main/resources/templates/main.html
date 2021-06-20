@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Günstiger Tanken App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+    body{
+    background-color: #f2f2f2;
+   }
+    h1 { color: #0072B5; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+        #tanken {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tanken td, #tanken th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tanken tr:nth-child(even){background-color: #92A8D1;}
+
+#tanken tr:hover {background-color: #ddd;}
+
+#tanken th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #34568B;
+  color: white;
+}
+    </style>
+</head>
+<body>
+<h1>Günstiger Tanken App</h1>
+<hr>
+<p th:text="'Zuletzt aktualisiert: ' + ${now} + ' Uhr'"></p>
+<table id="tanken">
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Datum </th>
+        <th> Name </th>
+        <th> Stadt </th>
+        <th> Preis </th>
+        <th> Distanz </th>
+        <th> WC </th>
+        <th> Restaurant </th>
+        <th> Autowäsche </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${tanken.empty}">
+        <td colspan="2">Keine Tankstellen verfügbar</td>
+    </tr>
+    <tr th:each="tank : ${tanken}">
+        <td><span th:text="${tank.id}"> ID </span></td>
+        <td><span th:text="${tank.date}"> Datum </span></td>
+        <td><span th:text="${tank.name}"> Name </span></td>
+        <td><span th:text="${tank.city}"> Stadt </span></td>
+        <td><span th:text="${tank.price} + ' €'"> Preis </span></td>
+        <td><span th:text="${tank.distance}+ ' km'"> Distanz </span></td>
+        <td><span th:text="${tank.wc}"> WC </span></td>
+        <td><span th:text="${tank.restaurant}"> Restaurant </span></td>
+        <td><span th:text="${tank.carwash}"> Autowäsche </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script
+        src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js">
+</script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js">
+</script>
+</html>
