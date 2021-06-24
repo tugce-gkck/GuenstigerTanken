@@ -36,12 +36,24 @@ Vue.component('login-new', {
         evt.preventDefault();
         var username = document.getElementById("inputUsername").value;
         var password = document.getElementById("inputPassword").value;
-         if(username === "tugce" && password === "passwort")
-         {
-             document.getElementById("errorLogin").style.visibility = "hidden";
-             window.open("/main","_self");
-         } else{
-              document.getElementById("errorLogin").style.visibility = "visible";
-         }
+        var body = {"username": username, "password": password };
+        var that = this;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.status == 200) {
+                var session = this.responseText;
+                document.getElementById("errorLogin").style.visibility = "hidden";
+                window.open("/?session='" + session + "'","_self");
+
+            } else{
+                document.getElementById("errorLogin").style.visibility = "visible";
+            }
+        };
+        xhttp.open("POST", "/user", true);
+        xhttp.send();
+
+
+
+
 
     });
