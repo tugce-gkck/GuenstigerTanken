@@ -74,6 +74,10 @@ class LoadDatabase {
                 "password varchar(255) ,NOT NULL,"+
                 "primary key (username));");
 
+        jdbcTemplate.execute("CREATE TABLE Tanken(" +
+                "username varchar(255) NOT NULL UNIQUE,"+
+                "password VARCHAR(255) NOT NULL," +
+                "primary key (username));");
 
         repository.deleteAll();
         Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
