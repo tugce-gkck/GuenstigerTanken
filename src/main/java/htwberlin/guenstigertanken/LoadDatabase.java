@@ -51,7 +51,7 @@ class LoadDatabase {
 
     }
     @Bean
-    CommandLineRunner initDatabase(TankenRepository repository, UserRepository userRepository) {
+    CommandLineRunner initDatabase(TankenRepository repository) {
 
         /*jdbcTemplate.execute("DROP TABLE Tanken;");
 
