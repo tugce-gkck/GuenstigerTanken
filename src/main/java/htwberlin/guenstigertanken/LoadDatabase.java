@@ -70,8 +70,8 @@ class LoadDatabase {
 
 
         jdbcTemplate.execute("CREATE TABLE User(" +
-                "username VARCHAR(255) NOT NULL," +
-                "password varchar(255) NOT NULL,"+
+                "username VARCHAR(255) ,NOT NULL, UNIQUE," +
+                "password varchar(255) ,NOT NULL,"+
                 "primary key (username));");
 
 
