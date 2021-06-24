@@ -1,5 +1,6 @@
 package htwberlin.guenstigertanken;
 
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -7,13 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class GuenstigertankenController {
 	private final TankenRepository repository;
+	private final UserRepository userRepository;
 
-	public GuenstigertankenController(TankenRepository repository){
+	public GuenstigertankenController(TankenRepository repository, UserRepository userRepository){
 		this.repository = repository;
+		this.userRepository = userRepository;
 	}
 	@GetMapping("/")
 	public String loginPage(Model model) {
@@ -38,6 +42,18 @@ public class GuenstigertankenController {
 	}
 	// end::get-aggregate-root[]
 
+	@PostMapping("/user")
+	User validation(@RequestBody User user) {
+		Example<User> example = Example.of(user);
+
+		Optional<User> valid = userRepository.findOne(example);
+
+		if(valid.isEmpty() || !( valid.get().getUsername() == user.getUsername() && valid.get().getPassword() == user.getPassword())){
+			throw new UserNotFoundException(user.getUsername());
+		}
+		return new User(user.getUsername(),"");
+	}
+
 	@PostMapping("/tanken")
 	Tanken newTanken(@RequestBody Tanken newTanken) {
 		return repository.save(newTanken);
@@ -50,7 +66,7 @@ public class GuenstigertankenController {
 				.orElseThrow(() -> new TankenNotFoundException(id));
 	}
 
-	@PutMapping("/employees/{id}")
+	@PutMapping("/tanken/{id}")
 	Tanken replaceTanken(@RequestBody Tanken newTanken, @PathVariable Long id) {
 
 		return repository.findById(id)

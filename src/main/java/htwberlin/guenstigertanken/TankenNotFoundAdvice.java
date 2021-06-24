@@ -12,7 +12,7 @@ class TankenNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(TankenNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String employeeNotFoundHandler(TankenNotFoundException ex) {
+    String tankenNotFoundHandler(TankenNotFoundException ex) {
         return ex.getMessage();
     }
 }
