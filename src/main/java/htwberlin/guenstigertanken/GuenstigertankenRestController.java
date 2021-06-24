@@ -1,7 +1,6 @@
 package htwberlin.guenstigertanken;
 
 import org.springframework.data.domain.Example;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class GuenstigertankenRestController {
 
         Optional<User> valid = userRepository.findOne(example);
 
-        if(valid.isEmpty() || !( valid.get().getUsername() == user.getUsername() && valid.get().getPassword() == user.getPassword())){
+        if(!valid.isPresent() || !( valid.get().getUsername() == user.getUsername() && valid.get().getPassword() == user.getPassword())){
             throw new UserNotFoundException(user.getUsername());
         }
         return new User(user.getUsername(),"");
