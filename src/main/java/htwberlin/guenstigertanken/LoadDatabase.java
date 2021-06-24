@@ -70,9 +70,9 @@ class LoadDatabase {
 
 
 
-        jdbcTemplate.execute("CREATE TABLE `User`(" +
-                "`username` VARCHAR(40) NOT NULL UNIQUE PRIMARY KEY ,"+
-                "`password` VARCHAR(40) NOT NULL);");
+        jdbcTemplate.execute("CREATE TABLE Users(" +
+                "username VARCHAR(40) NOT NULL UNIQUE PRIMARY KEY ,"+
+                "password VARCHAR(40) NOT NULL);");
 
         /*repository.deleteAll();
         Timestamp ts = Timestamp.valueOf(LocalDateTime.now());

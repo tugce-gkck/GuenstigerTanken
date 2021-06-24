@@ -3,7 +3,7 @@ package htwberlin.guenstigertanken;
 import javax.persistence.*;
 
 @Entity
-@Table(name="User")
+@Table(name="Users")
 public class User {
     @Id
     @Column(name="username")
