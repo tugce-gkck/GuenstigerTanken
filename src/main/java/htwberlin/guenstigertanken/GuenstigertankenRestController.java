@@ -1,6 +1,7 @@
 package htwberlin.guenstigertanken;
 
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +32,11 @@ public class GuenstigertankenRestController {
 
     @PostMapping("/user")
     User validation(@RequestBody User user) {
-        Example<User> example = Example.of(user);
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withMatcher("username", match -> match.exact())
+                .withMatcher("password", match -> match.exact());
+
+        Example<User> example = Example.of(user, matcher);
 
         Optional<User> valid = userRepository.findOne(example);
 
