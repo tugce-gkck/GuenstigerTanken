@@ -13,11 +13,11 @@ import java.util.Optional;
 @Controller
 public class GuenstigertankenController {
 	private final TankenRepository repository;
-	//private final UserRepository userRepository;
+	private final UserRepository userRepository;
 
-	public GuenstigertankenController(TankenRepository repository){
+	public GuenstigertankenController(TankenRepository repository, UserRepository userRepository){
 		this.repository = repository;
-		//this.userRepository = userRepository;
+		this.userRepository = userRepository;
 	}
 	@GetMapping("/")
 	public String loginPage(Model model) {
@@ -44,13 +44,13 @@ public class GuenstigertankenController {
 
 	@PostMapping("/user")
 	User validation(@RequestBody User user) {
-		/*Example<User> example = Example.of(user);
+		Example<User> example = Example.of(user);
 
 		Optional<User> valid = userRepository.findOne(example);
 
 		if(valid.isEmpty() || !( valid.get().getUsername() == user.getUsername() && valid.get().getPassword() == user.getPassword())){
 			throw new UserNotFoundException(user.getUsername());
-		}*/
+		}
 		return new User(user.getUsername(),"");
 	}
 

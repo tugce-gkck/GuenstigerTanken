@@ -51,7 +51,7 @@ class LoadDatabase {
 
     }
     @Bean
-    CommandLineRunner initDatabase(TankenRepository repository) {
+    CommandLineRunner initDatabase(TankenRepository repository, UserRepository user) {
 
         /*jdbcTemplate.execute("DROP TABLE Tanken;");
 
@@ -66,15 +66,18 @@ class LoadDatabase {
                 "restaurant BOOLEAN," +
                 "carwash BOOLEAN," +
                 "primary key (id, date));");
-                */
+
 
 
 
         jdbcTemplate.execute("CREATE TABLE Users(" +
                 "username VARCHAR(40) NOT NULL UNIQUE PRIMARY KEY ,"+
                 "password VARCHAR(40) NOT NULL);");
+                 */
+        user.deleteAll();
+        user.save(new User("tugce","passwort"));
 
-        /*repository.deleteAll();
+        repository.deleteAll();
         Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
         repository.save(new Tanken(ts,"Total", "Berlin", 4,1.01,true,true,true));
         repository.save(new Tanken(ts,"Shell", "Berlin", 5,1.50,true,false,false));
@@ -90,7 +93,7 @@ class LoadDatabase {
         repository.save(new Tanken(ts,"Aral", "München", 133.9,1.00,true,false,false));
         repository.save(new Tanken(ts,"Shell", "München", 140,1.80,false,false,false));
 
-         */
+
         return args -> {
         };
     }
