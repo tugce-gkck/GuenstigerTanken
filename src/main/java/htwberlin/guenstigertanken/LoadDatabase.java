@@ -71,9 +71,8 @@ class LoadDatabase {
 
 
         jdbcTemplate.execute("CREATE TABLE User(" +
-                "username varchar(255) NOT NULL UNIQUE,"+
-                "password VARCHAR(255) NOT NULL," +
-                "primary key (username));");
+                "username varchar(40) NOT NULL UNIQUE PRIMARY KEY ,"+
+                "password VARCHAR(40) NOT NULL);");
 
         repository.deleteAll();
         Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
