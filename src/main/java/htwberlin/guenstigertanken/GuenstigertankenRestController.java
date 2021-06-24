@@ -40,7 +40,7 @@ public class GuenstigertankenRestController {
 
         Optional<User> valid = userRepository.findOne(example);
 
-        if(!valid.isPresent() || !( valid.get().getUsername() == user.getUsername() && valid.get().getPassword() == user.getPassword())){
+        if(!valid.isPresent()){
             throw new UserNotFoundException(user.getUsername());
         }
         return new User(user.getUsername(),"");
