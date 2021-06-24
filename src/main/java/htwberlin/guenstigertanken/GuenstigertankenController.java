@@ -30,6 +30,10 @@ public class GuenstigertankenController {
 			return "main";
 		}
 	}
+	@GetMapping("/error")
+	public String loginPage() {
+		return "error";
+	}
 
 }
 
