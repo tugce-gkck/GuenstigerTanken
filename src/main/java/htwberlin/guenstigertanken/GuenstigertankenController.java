@@ -21,7 +21,7 @@ public class GuenstigertankenController {
 		this.userRepository = userRepository;
 	}
 	@GetMapping("/")
-	public String loginPage(Model model, @RequestParam(required = false) String session) {
+	public String loginPage(Model model, @RequestParam(defaultValue = "") String session) {
 		model.addAttribute("jsPath", jsPath);
 		if(session == null || session.equals("")){
 			return "index";
