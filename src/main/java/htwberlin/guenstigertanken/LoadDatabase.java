@@ -69,12 +69,8 @@ class LoadDatabase {
                 */
 
 
-        jdbcTemplate.execute("CREATE TABLE User(" +
-                "username VARCHAR(255) ,NOT NULL, UNIQUE," +
-                "password varchar(255) ,NOT NULL,"+
-                "primary key (username));");
 
-        jdbcTemplate.execute("CREATE TABLE Tanken(" +
+        jdbcTemplate.execute("CREATE TABLE User(" +
                 "username varchar(255) NOT NULL UNIQUE,"+
                 "password VARCHAR(255) NOT NULL," +
                 "primary key (username));");
