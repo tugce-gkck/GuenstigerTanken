@@ -32,15 +32,12 @@ public class GuenstigertankenRestController {
 
     @PostMapping("/user")
     User validation(@RequestBody User user) {
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withMatcher("username", match -> match.exact())
-                .withMatcher("password", match -> match.exact());
 
-        Example<User> example = Example.of(user, matcher);
+        User realUser = userRepository.findById(user.getUsername())
+                .orElseThrow(() -> new UserNotFoundException(user.getUsername()));
 
-        Optional<User> valid = userRepository.findOne(example);
 
-        if(!valid.isPresent()){
+        if(!realUser.getPassword().equals(user.getPassword())){
             throw new UserNotFoundException(user.getUsername());
         }
         return new User(user.getUsername(),"");
