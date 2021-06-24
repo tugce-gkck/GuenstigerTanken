@@ -42,6 +42,11 @@ public class GuenstigertankenController {
 	}
 	// end::get-aggregate-root[]
 
+	@GetMapping("/user")
+	public List<User> allUsers() {
+		return (List<User>) this.userRepository.findAll();
+	}
+
 	@PostMapping("/user")
 	User validation(@RequestBody User user) {
 		Example<User> example = Example.of(user);
