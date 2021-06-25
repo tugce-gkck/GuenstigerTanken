@@ -27,7 +27,7 @@ var app = new Vue({
                     console.log(this.status, this.statusText);
                 }
             };
-            xhttp.open("GET", "/tanken?session='" + session + "'", true);
+            xhttp.open("GET", "/tanken?session=" + session, true);
             xhttp.send();
         },
 
