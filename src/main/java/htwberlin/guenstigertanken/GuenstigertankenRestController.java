@@ -11,12 +11,12 @@ import java.util.*;
 public class GuenstigertankenRestController {
     private final TankenRepository repository;
     private final UserRepository userRepository;
-    private Map<String,String> sessions;
+    private HashMap<String, String> sessions;
 
     public GuenstigertankenRestController(TankenRepository repository, UserRepository userRepository){
         this.repository = repository;
         this.userRepository = userRepository;
-        this.sessions = Map.of();
+        this.sessions = new HashMap<String, String>();
     }
 
     // Aggregate root
@@ -39,11 +39,11 @@ public class GuenstigertankenRestController {
             throw new UserNotFoundException(user.getUsername());
         }
 
-        /*for (Map.Entry<String, String> entry : sessions.entrySet()) {
+        for (HashMap.Entry<String, String> entry : sessions.entrySet()) {
            if (entry.getValue().equals(user.getUsername())) {
              return entry.getKey();
             }
-        }*/
+        }
 
         String session = UUID.randomUUID().toString();
         sessions.put(session,user.getUsername());
