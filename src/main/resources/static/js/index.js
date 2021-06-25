@@ -37,6 +37,7 @@ Vue.component('login-new', {
         var username = document.getElementById("inputUsername").value;
         var password = document.getElementById("inputPassword").value;
         var body = {"username": username, "password": password };
+        var bodyJson = JSON.stringify(body);
         var that = this;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -50,7 +51,7 @@ Vue.component('login-new', {
             }
         };
         xhttp.open("POST", "/login", true);
-        xhttp.send(body);
+        xhttp.send(bodyJson);
 
 
 
