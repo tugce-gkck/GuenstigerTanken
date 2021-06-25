@@ -49,7 +49,7 @@ Vue.component('login-new', {
                 document.getElementById("errorLogin").style.visibility = "visible";
             }
         };
-        xhttp.open("POST", "/user", true);
+        xhttp.open("POST", "/login", true);
         xhttp.send();
 
 
