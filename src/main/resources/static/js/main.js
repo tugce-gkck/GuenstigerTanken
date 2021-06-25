@@ -7,17 +7,8 @@ Vue.component('tanken-entry', {
             <td>{{ tanken.city }}</td>
             <td>{{ tanken.price }}</td>
             <td>{{ tanken.distance }}</td>
-        </tr>`,
-    methods: {
-        retrieveData: function() {
-            this.$root.retrieveAllTanken();
-        }
-    },mounted() {
-        this.retrieveData();
-    }
+        </tr>`
 });
-
-
 
 var app = new Vue({
     el: '#contents',
@@ -45,4 +36,6 @@ var app = new Vue({
         }
     }
 });
+
+app.$refs.tabelle.retrieveAllTanken();
 
