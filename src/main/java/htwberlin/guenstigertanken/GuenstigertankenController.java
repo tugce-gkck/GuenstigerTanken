@@ -14,7 +14,6 @@ import java.util.Optional;
 public class GuenstigertankenController {
 	private final TankenRepository repository;
 	private final UserRepository userRepository;
-	private final String jsPath = "../../resources/templates/js";
 
 	public GuenstigertankenController(TankenRepository repository, UserRepository userRepository){
 		this.repository = repository;
@@ -22,7 +21,6 @@ public class GuenstigertankenController {
 	}
 	@GetMapping("/")
 	public String loginPage(Model model, @RequestParam(defaultValue = "") String session) {
-		model.addAttribute("jsPath", jsPath);
 		if(session == null || session.equals("")){
 			return "index";
 		} else{
