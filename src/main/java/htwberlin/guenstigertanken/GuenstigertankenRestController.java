@@ -54,8 +54,13 @@ public class GuenstigertankenRestController {
 
     String validateSession(String session) {
         String username = this.sessions.get(session);
-        User user = this.userRepository.findById(username)
+        try{
+            User user = this.userRepository.findById(username)
                     .orElseThrow(() -> new UserNotFoundException(username));
+        } catch(Exception e){
+            throw new UserNotFoundException(username);
+        }
+
         return username;
     }
 
