@@ -44,7 +44,7 @@ Vue.component('login-new', {
             if (this.status == 200) {
                 var session = this.responseText;
                 document.getElementById("errorLogin").style.visibility = "hidden";
-                window.open("/?session='" + session + "'","_self");
+                window.open("/?session=" + session,"_self");
 
             } else{
                 document.getElementById("errorLogin").style.visibility = "visible";
