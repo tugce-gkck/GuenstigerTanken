@@ -30,12 +30,12 @@ var app = new Vue({
             xhttp.open("GET", "/tanken?session='" + session + "'", true);
             xhttp.send();
         },
-        get: function(name){
-            if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-                return decodeURIComponent(name[1]);
-        }
+
     }
 });
-
+function get(name){
+    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+        return decodeURIComponent(name[1]);
+};
 app.retrieveAllTanken();
 
