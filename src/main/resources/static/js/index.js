@@ -36,7 +36,7 @@ Vue.component('login-new', {
         evt.preventDefault();
         var username = document.getElementById("inputUsername").value;
         var password = document.getElementById("inputPassword").value;
-        var body = {"username": username, "password": password };
+        var body = {username: username, password: password };
         var bodyJson = JSON.stringify(body);
         var that = this;
         var xhttp = new XMLHttpRequest();
