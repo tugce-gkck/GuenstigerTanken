@@ -7,7 +7,14 @@ Vue.component('tanken-entry', {
             <td>{{ tanken.city }}</td>
             <td>{{ tanken.price }}</td>
             <td>{{ tanken.distance }}</td>
-        </tr>`
+        </tr>`,
+    methods: {
+        retrieveData: function() {
+            this.$root.retrieveAllTanken();
+        }
+    },mounted() {
+        this.retrieveData();
+    }
 });
 
 
@@ -31,11 +38,11 @@ var app = new Vue({
             };
             xhttp.open("GET", "/tanken?session='" + session + "'", true);
             xhttp.send();
+        },
+        get: function(name){
+            if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+                return decodeURIComponent(name[1]);
         }
     }
 });
 
-function get(name){
-    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-        return decodeURIComponent(name[1]);
-}
