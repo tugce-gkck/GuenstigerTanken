@@ -19,12 +19,12 @@ var app = new Vue({
             var comp = this;
             var session = get("session");
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = () => {
-                if (this.status == 200) {
-                    console.log(this.status, this.statusText);
-                    comp.TankenArray = this.responseText;
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
+                    console.log(xhttp.status, xhttp.statusText);
+                    comp.TankenArray = xhttp.responseText;
                 } else {
-                    console.log(this.status, this.statusText);
+                    console.log(xhttp.status, xhttp.statusText);
                 }
             };
             xhttp.open("GET", "/tanken?session=" + session, true);
