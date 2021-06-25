@@ -1,24 +1,13 @@
-Vue.component('tanken-liste', {
-    props: [],
-    template: `<div class="container center_div"><h3>Login</h3>
-            <hr />
-             <span style="visibility: hidden" id="errorLogin" class="label label-danger">Falsche Login-Daten!</span>
-            <br />
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="inputUsername">Benutzername</label>
-                    <input type="username" class="form-control" id="inputUsername" placeholder="Benutzername">
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword">Passwort</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Passwort">
-                </div>
-               <button class="btn btn-primary" type="submit">Login</button>
-
-                <hr />
-                <!--<button type="button" class="btn btn-link">Signup</button>
-                <button type="button" class="btn btn-link">Reset Password</button>-->
-            </form></div>`
+Vue.component('tanken-entry', {
+    props: ['tanken'],
+    template: `
+        <tr>
+            <td>{{ tanken.date }}</td>
+            <td>{{ tanken.name }}</td>
+            <td>{{ tanken.city }}</td>
+            <td>{{ tanken.price }}</td>
+            <td>{{ tanken.distance }}</td>
+        </tr>`
 });
 
 
@@ -26,8 +15,27 @@ Vue.component('tanken-liste', {
 var app = new Vue({
     el: '#contents',
     data: {
+        TankenArray:[]
     },
     methods: {
-
+        retrieveAllTanken: function () {
+            var comp = this;
+            var session = get("session");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.status == 200) {
+                    comp.TankenArray = JSON.parse(this.responseText);
+                } else {
+                    console.log(this.status, this.statusText);
+                }
+            };
+            xhttp.open("GET", "/tanken?session='" + session + "'", true);
+            xhttp.send();
+        }
     }
 });
+
+function get(name){
+    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+        return decodeURIComponent(name[1]);
+}
