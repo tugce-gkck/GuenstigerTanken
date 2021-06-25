@@ -1,7 +1,6 @@
 Vue.component('tanken-entry', {
     props: ['tanken'],
-    template: `
-        <tr>
+    template: `<tr>
             <td>{{ tanken.date }}</td>
             <td>{{ tanken.name }}</td>
             <td>{{ tanken.city }}</td>
@@ -22,7 +21,7 @@ var app = new Vue({
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.status == 200) {
-                    comp.TankenArray = JSON.parse(this.responseText);
+                    comp.TankenArray = this.responseText;
                 } else {
                     console.log(this.status, this.statusText);
                 }
