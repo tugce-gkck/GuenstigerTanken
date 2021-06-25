@@ -50,7 +50,7 @@ Vue.component('login-new', {
             }
         };
         xhttp.open("POST", "/login", true);
-        xhttp.send();
+        xhttp.send(body);
 
 
 
