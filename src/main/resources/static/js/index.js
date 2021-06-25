@@ -54,8 +54,4 @@ Vue.component('login-new', {
         xhttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
         xhttp.send(bodyJson);
 
-
-
-
-
     });

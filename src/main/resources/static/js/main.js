@@ -37,5 +37,5 @@ var app = new Vue({
     }
 });
 
-app.$refs.tabelle.retrieveAllTanken();
+app.retrieveAllTanken();
 
