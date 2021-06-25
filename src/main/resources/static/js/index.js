@@ -50,6 +50,7 @@ Vue.component('login-new', {
                 document.getElementById("errorLogin").style.visibility = "visible";
             }
         };
+        xhttp.setRequestHeader("contentType", "application/json");
         xhttp.open("POST", "/login", true);
         xhttp.send(bodyJson);
 
