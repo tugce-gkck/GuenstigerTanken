@@ -38,16 +38,17 @@ public class GuenstigertankenRestController {
         if(!realUser.getPassword().equals(user.getPassword())){
             throw new UserNotFoundException(user.getUsername());
         }
-
+        /*
         for (Map.Entry<String, String> entry : sessions.entrySet()) {
            if (entry.getValue().equals(user.getUsername())) {
              return entry.getKey();
             }
-        }
+        }*/
 
         String session = UUID.randomUUID().toString();
-        sessions.put(session,user.getUsername());
         return session;
+        /*sessions.put(session,user.getUsername());
+        return session;*/
 
     }
 
