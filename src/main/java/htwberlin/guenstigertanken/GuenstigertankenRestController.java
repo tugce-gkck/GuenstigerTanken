@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@CrossOrigin(origins = "https://guenstigertanken.herokuapp.com/", maxAge = 3600)
 @RestController
 public class GuenstigertankenRestController {
     private final TankenRepository repository;

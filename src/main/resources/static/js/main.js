@@ -1,13 +1,3 @@
-Vue.component('tanken-entry', {
-    props: ['tanken'],
-    template: `<tr>
-            <td>{{ tanken.date }}</td>
-            <td>{{ tanken.name }}</td>
-            <td>{{ tanken.city }}</td>
-            <td>{{ tanken.price }}</td>
-            <td>{{ tanken.distance }}</td>
-        </tr>`
-});
 
 var app = new Vue({
     el: '#contents',

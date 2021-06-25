@@ -36,9 +36,14 @@
         <th scope="col">Distanz</th>
     </tr>
 </thead>
-<tbody v-for="tanken in TankenArray">
-    <tanken-entry v-bind:tanken="tanken"
-                  v-bind:key="tanken.id"></tanken-entry>
+<tbody >
+    <tr v-for="tanken in TankenArray">
+    <td>{{ tanken.date }}</td>
+    <td>{{ tanken.name }}</td>
+    <td>{{ tanken.city }}</td>
+    <td>{{ tanken.price }}</td>
+    <td>{{ tanken.distance }}</td>
+</tr>`
 </tbody>
 </table>
 
