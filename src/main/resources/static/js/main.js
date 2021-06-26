@@ -66,7 +66,8 @@ var tanken = new Vue({
         },
         onClickRow: function(index){
             var session = get("session");
-            window.open("/" + index + "/?session=" + session, "_self");
+            var id = this.TankenArray[index].id;
+            window.open("/" + id + "/?session=" + session, "_self");
         }
     }
 });
