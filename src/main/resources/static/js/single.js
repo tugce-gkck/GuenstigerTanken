@@ -33,7 +33,18 @@ user.retrieveUsername();
 var tanken = new Vue({
     el: '#contents',
     data: {
-        tanken:{},
+        tanken:{
+            "id": "id",
+            "date": "date",
+            "name": "name",
+            "city": "city",
+            "reporter": "reporter",
+            "price": "1,0",
+            "distance": "1,0",
+            "wc": true,
+            "restaurant": true,
+            "carwash": true
+        },
         id: '0'
     },
     methods: {
