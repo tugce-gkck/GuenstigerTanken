@@ -29,7 +29,7 @@ Vue.component('login-new', {
     var app = new Vue({
         el: '#contents',
         data: {
-            user: ""
+            user: ''
         },
         methods: {
             onRegisterClick: function(evt){
