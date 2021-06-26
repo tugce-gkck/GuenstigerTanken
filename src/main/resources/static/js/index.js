@@ -1,5 +1,5 @@
 Vue.component('login-new', {
-        props: [],
+        props: ['username'],
         template: `<div class="container center_div"><h3>Login</h3>
             <hr />
              <span style="visibility: hidden" id="errorLogin" class="label label-danger">Falsche Login-Daten!</span>
