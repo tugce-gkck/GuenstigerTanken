@@ -49,6 +49,11 @@ var tanken = new Vue({
                                 var date = new Date(comp.TankenArray[i].date);
                                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
                                 comp.TankenArray[i].date = date.toLocaleDateString('de-DE', options);
+
+
+                                comp.TankenArray[i].price = price.replace(',','.').replace(' ','')
+
+                                comp.TankenArray[i].distance = distance.replace(',','.').replace(' ','')
                             }
                         }
                     } else {
