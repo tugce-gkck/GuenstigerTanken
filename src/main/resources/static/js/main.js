@@ -50,10 +50,10 @@ var tanken = new Vue({
                                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
                                 comp.TankenArray[i].date = date.toLocaleDateString('de-DE', options);
 
-
-                                comp.TankenArray[i].price = comp.TankenArray[i].price.replace(',','.').replace(' ','')
-
-                                comp.TankenArray[i].distance = comp.TankenArray[i].distance.replace(',','.').replace(' ','')
+                                var price = comp.TankenArray[i].price.toString();
+                                comp.TankenArray[i].price = price.replace(',','.').replace(' ','')
+                                var distance = comp.TankenArray[i].distance.toString();
+                                comp.TankenArray[i].distance = distance.replace(',','.').replace(' ','')
                             }
                         }
                     } else {
