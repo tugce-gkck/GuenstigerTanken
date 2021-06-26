@@ -16,7 +16,7 @@ Vue.component('login-new', {
                     <input type="password" class="form-control" id="inputPassword" placeholder="Passwort">
                 </div>
                <button class="btn btn-primary" type="submit">Login</button>
-               <button class="btn btn-secondary" type="register">Registrieren</button>
+               <button id="register" class="btn btn-secondary" >Registrieren</button>
 
                 <hr />
                 <!--<button type="button" class="btn btn-link">Signup</button>
@@ -68,7 +68,7 @@ document.getElementById("loginForm").addEventListener('submit', function(evt){
 
 });
 
-document.getElementById("loginForm").addEventListener('register', function(evt){
+document.getElementById("register").addEventListener("click",function(evt){
     evt.preventDefault();
     var username = document.getElementById("inputUsername").value;
     var password = document.getElementById("inputPassword").value;
