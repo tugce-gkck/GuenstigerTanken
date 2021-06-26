@@ -51,9 +51,9 @@ var tanken = new Vue({
                                 comp.TankenArray[i].date = date.toLocaleDateString('de-DE', options);
 
                                 var price = comp.TankenArray[i].price.toString();
-                                comp.TankenArray[i].price = price.replace(',','.').replace(' ','')
+                                comp.TankenArray[i].price = price.replace('.',',').replace(' ','')
                                 var distance = comp.TankenArray[i].distance.toString();
-                                comp.TankenArray[i].distance = distance.replace(',','.').replace(' ','')
+                                comp.TankenArray[i].distance = distance.replace('.',',').replace(' ','')
                             }
                         }
                     } else {
