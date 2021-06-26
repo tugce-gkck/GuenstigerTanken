@@ -15,6 +15,8 @@ public class Tanken {
     private String name;
     @Column(name="city")
     private String city;
+    @Column(name="reporter")
+    private String reporter;
     @Column(name="distance")
     private double distance;
     @Column(name="price")
@@ -29,33 +31,35 @@ public class Tanken {
     public Tanken(){
 
     }
-    public Tanken(long id,String date,String name,String city,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
+    public Tanken(long id,String date,String name,String city, String reporter, double distance,double price,boolean wc, boolean restaurant, boolean carwash){
         this.date = Timestamp.valueOf(date);
         this.id = id;
         this.name = name;
         this.city = city;
+        this.reporter = reporter;
         this.distance = distance;
         this.price = price;
         this.wc = wc;
         this.restaurant = restaurant;
         this.carwash = carwash;
     }
-    public Tanken(String date,String name,String city,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
-        this(0,date,name,city,distance,price,wc,restaurant,carwash);
+    public Tanken(String date,String name,String city, String reporter, double distance,double price,boolean wc, boolean restaurant, boolean carwash){
+        this(0,date,name,city,reporter,distance,price,wc,restaurant,carwash);
     }
-    public Tanken(long id,Timestamp date,String name,String city,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
+    public Tanken(long id,Timestamp date,String name,String city,String reporter,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
         this.date = date;
         this.id = id;
         this.name = name;
         this.city = city;
+        this.reporter = reporter;
         this.distance = distance;
         this.price = price;
         this.wc = wc;
         this.restaurant = restaurant;
         this.carwash = carwash;
     }
-    public Tanken(Timestamp date,String name,String city,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
-        this(0,date,name,city,distance,price,wc,restaurant,carwash);
+    public Tanken(Timestamp date,String name,String city,String reporter,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
+        this(0,date,name,city,reporter,distance,price,wc,restaurant,carwash);
     }
 
     @Override
@@ -63,6 +67,7 @@ public class Tanken {
         return "Tanken[id=" + id +
                      ",name=" + name +
                      ",city=" + city +
+                     ",reporter=" + reporter +
                      ",distance=" + distance +
                      ",price=" + price +
                      ",wc=" + wc +
@@ -111,6 +116,14 @@ public class Tanken {
 
     public String getCity() {
         return city;
+    }
+
+    public String getReporter() {
+        return reporter;
+    }
+
+    public void setReporter(String reporter) {
+        this.reporter = reporter;
     }
 
     public double getDistance() {
