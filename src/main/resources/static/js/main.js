@@ -15,7 +15,9 @@ var app = new Vue({
                         if (xhttp.responseText) {
                             comp.TankenArray = JSON.parse(xhttp.responseText);
                             for (var i = 0; i < comp.TankenArray.length; i++) {
-                                comp.TankenArray[i].date = (new Date(comp.TankenArray[i].date)).toString();
+                                var date = new Date(comp.TankenArray[i].date);
+                                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+                                comp.TankenArray[i].date = date.toLocaleDateString('de-DE', options);
                             }
                         }
                     } else {
@@ -29,6 +31,7 @@ var app = new Vue({
 
     }
 });
+// URL Parameter auslesen
 function get(name){
     if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
         return decodeURIComponent(name[1]);
