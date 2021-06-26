@@ -28,6 +28,15 @@ public class GuenstigertankenController {
 			return "main";
 		}
 	}
+
+	@GetMapping("/{id}")
+	public String singleTanken(Model model, @PathVariable Long id,@RequestParam("session") String session) {
+		if(session == null || session.equals("")){
+			return "error";
+		} else{
+			return "single";
+		}
+	}
 	@GetMapping("/error")
 	public String loginPage() {
 		return "error";
