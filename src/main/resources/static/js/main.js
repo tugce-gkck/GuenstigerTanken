@@ -15,7 +15,7 @@ var app = new Vue({
                         if (xhttp.responseText) {
                             comp.TankenArray = JSON.parse(xhttp.responseText);
                             for (var i = 0; i < comp.TankenArray.length; i++) {
-                                comp.TankenArray[i].date = new Date(comp.TankenArray[i].date);
+                                comp.TankenArray[i].date = (new Date(comp.TankenArray[i].date)).toString();
                             }
                         }
                     } else {
