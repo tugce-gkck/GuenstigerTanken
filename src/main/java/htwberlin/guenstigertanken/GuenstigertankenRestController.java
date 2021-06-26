@@ -51,6 +51,17 @@ public class GuenstigertankenRestController {
 
     }
 
+    @PostMapping("/register")
+    User register(@RequestBody User user) {
+
+        if(!userRepository.findById(user.getUsername()).isEmpty()){
+            throw new UserAlreadyRegisteredException(user.getUsername());
+        }
+        this.userRepository.save(user);
+
+        return user;
+    }
+
     String validateSession(String session) {
         String username = this.sessions.get(session);
         try{
