@@ -10,12 +10,17 @@ var app = new Vue({
             var session = get("session");
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
-                if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
-                    console.log(xhttp.status, xhttp.responseText);
-                    if(xhttp.responseText)
-                        comp.TankenArray = JSON.parse(xhttp.responseText);
-                } else {
-                    console.log(xhttp.status, xhttp.statusText);
+                if (xhttp.readyState == XMLHttpRequest.DONE) {
+                    if (xhttp.status == 200) {
+                        if (xhttp.responseText) {
+                            comp.TankenArray = JSON.parse(xhttp.responseText);
+                            for (var i = 0; i < comp.TankenArray.length; i++) {
+                                comp.TankenArray[i].date = new Date(comp.TankenArray[i].date);
+                            }
+                        }
+                    } else {
+                        console.log(xhttp.status, xhttp.statusText);
+                    }
                 }
             };
             xhttp.open("GET", "/tanken?session=" + session, true);
