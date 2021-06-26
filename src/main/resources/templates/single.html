@@ -25,32 +25,23 @@
 <body>
 <p id="user" style="visibility: hidden" class="navbar-text">Eingeloggt als {{ username }}</p>
 <a id="loginButton" style="visibility: hidden" class="btn btn-primary navbar-btn" href="/" role="button">Login</a>
-<h1>Günstiger Tanken App</h1>
+<div id="contents">
+<h1>Tankstelle mit ID: {{ id }}</h1>
 <hr>
-<!--<p th:text="'Zuletzt aktualisiert: ' + ${now} + ' Uhr'"></p>-->
-<table class="table table-hover" id="contents">
-<thead>
-    <tr>
-        <th scope="col">Datum</th>
-        <th scope="col">Name</th>
-        <th scope="col">Stadt</th>
-        <th scope="col">Reporter</th>
-        <th scope="col">Preis</th>
-        <th scope="col">Distanz</th>
-    </tr>
-</thead>
-<tbody >
-    <tr v-for="tanken in TankenArray" @click.native="onClickRow({{ tanken.id }})">
-        <td>{{ tanken.date }}</td>
-        <td>{{ tanken.name }}</td>
-        <td>{{ tanken.city }}</td>
-        <td>{{ tanken.reporter }}</td>
-        <td>{{ tanken.price }} €</td>
-        <td>{{ tanken.distance }} km</td>
-    </tr>
-</tbody>
-</table>
-
+<div >
+    <ul class="list-group-item">
+        <li class="list-group-item">Datum: {{ tanken.date }}</li>
+        <li class="list-group-item">Name: {{ tanken.name }}</li>
+        <li class="list-group-item">Stadt: {{ tanken.city }}</li>
+        <li class="list-group-item">Reporter: {{ tanken.reporter }}</li>
+        <li class="list-group-item">Preis: {{ tanken.price }}</li>
+        <li class="list-group-item">Distanz: {{ tanken.distance }}</li>
+        <li class="list-group-item">WC: {{ tanken.wc }}</li>
+        <li class="list-group-item">Restaurant: {{ tanken.restaurant }}</li>
+        <li class="list-group-item">Autowäsche: {{ tanken.carwash }}</li>
+    </ul>
+</div>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
