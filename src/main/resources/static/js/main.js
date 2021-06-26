@@ -1,5 +1,36 @@
+var user = new Vue({
+    el: '#user',
+    data: {
+        username: 'none'
+    },
+    methods: {
+        retrieveUsername: function () {
+            var that = this;
+            var session = get("session");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == XMLHttpRequest.DONE) {
+                    if (xhttp.status == 200) {
+                        if (xhttp.responseText) {
+                           that.username = xhttp.responseText;
+                            document.getElementById("loginButton").style.visibility = "hidden";
+                            document.getElementById("user").style.visibility = "visible";
+                        }
+                    } else {
+                        console.log(xhttp.status, xhttp.statusText);
+                        document.getElementById("loginButton").style.visibility = "visible";
+                        document.getElementById("user").style.visibility = "hidden";
+                    }
+                }
+            };
+            xhttp.open("GET", "/user?session=" + session, true);
+            xhttp.send();
+        },
 
-var app = new Vue({
+    }
+});
+user.retrieveUsername();
+var tanken = new Vue({
     el: '#contents',
     data: {
         TankenArray:[]
@@ -36,5 +67,5 @@ function get(name){
     if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
         return decodeURIComponent(name[1]);
 };
-app.retrieveAllTanken();
+tanken.retrieveAllTanken();
 

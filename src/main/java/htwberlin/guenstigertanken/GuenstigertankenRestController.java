@@ -62,6 +62,14 @@ public class GuenstigertankenRestController {
         return user;
     }
 
+    @GetMapping("/user")
+    String user(@RequestParam("session") String session) {
+        if(!this.sessions.containsKey(session))
+            throw new UserNotFoundException("");
+
+        return this.sessions.get(session);
+    }
+
     String validateSession(String session) {
         String username = this.sessions.get(session);
         try{
