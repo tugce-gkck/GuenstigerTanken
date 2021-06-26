@@ -68,9 +68,6 @@ class LoadDatabase {
                 "carwash BOOLEAN," +
                 "primary key (id, date));");
 
-
-
-
         jdbcTemplate.execute("CREATE TABLE Users(" +
                 "username VARCHAR(40) NOT NULL UNIQUE PRIMARY KEY ,"+
                 "password VARCHAR(40) NOT NULL);");
@@ -78,21 +75,6 @@ class LoadDatabase {
         user.deleteAll();
         user.save(new User("tugce","passwort"));
 
-        jdbcTemplate.execute("DROP TABLE Tanken;");
-
-        jdbcTemplate.execute("CREATE TABLE Tanken(" +
-                "id SERIAL,"+
-                "date timestamp with time zone NOT NULL,"+
-                "name VARCHAR(255)," +
-                "city varchar(255) NOT NULL,"+
-                "reporter varchar(40) NOT NULL,"+
-                "distance DECIMAL(15,2),"+
-                "price DECIMAL(15,2)," +
-                "wc BOOLEAN," +
-                "restaurant BOOLEAN," +
-                "carwash BOOLEAN," +
-                "primary key (id, date));");
-        /*
         repository.deleteAll();
         Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
         repository.save(new Tanken(ts,"Total", "Berlin","tugce", 4,1.01,true,true,true));
@@ -108,7 +90,6 @@ class LoadDatabase {
         repository.save(new Tanken(ts,"Total", "München","tugce", 132.6,1.12,true,true,true));
         repository.save(new Tanken(ts,"Aral", "München","tugce", 133.9,1.00,true,false,false));
         repository.save(new Tanken(ts,"Shell", "München","tugce", 140,1.80,false,false,false));
-*/
 
         return args -> {
         };
