@@ -64,7 +64,10 @@ var tanken = new Vue({
             xhttp.open("GET", "/tanken?session=" + session, true);
             xhttp.send();
         },
-
+        onClickRow: function(index){
+            var session = get("session");
+            window.open("/" + index + "/?session=" + session, "_self");
+        }
     }
 });
 // URL Parameter auslesen
@@ -73,9 +76,4 @@ function get(name){
         return decodeURIComponent(name[1]);
 };
 tanken.retrieveAllTanken();
-
-function onClickRow(id){
-    var session = get("session");
-    window.open("/" + id + "/?session=" + session, "_self");
-}
 
