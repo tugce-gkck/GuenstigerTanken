@@ -40,7 +40,7 @@
     </tr>
 </thead>
 <tbody >
-    <tr v-for="tanken in TankenArray" @click.native="onClickRow({{ tanken.id }})">
+    <tr :key="tanken.id" v-for="(tanken,key) in TankenArray" @click.native="onClickRow(key)">
         <td>{{ tanken.date }}</td>
         <td>{{ tanken.name }}</td>
         <td>{{ tanken.city }}</td>
