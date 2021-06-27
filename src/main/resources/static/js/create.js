@@ -14,12 +14,12 @@ var user = new Vue({
                         if (xhttp.responseText) {
                            that.username = xhttp.responseText;
                             document.getElementById("loginButton").style.visibility = "hidden";
-                            document.getElementById("user").style.visibility = "visible";
+                            document.getElementById("userInfo").style.visibility = "visible";
                         }
                     } else {
                         console.log(xhttp.status, xhttp.statusText);
                         document.getElementById("loginButton").style.visibility = "visible";
-                        document.getElementById("user").style.visibility = "hidden";
+                        document.getElementById("userInfo").style.visibility = "hidden";
                     }
                 }
             };
