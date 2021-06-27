@@ -36,9 +36,9 @@
             <p class="card-text">Berichtet von {{ tanken.reporter }}</p>
             <span class="badge badge-light">{{ tanken.price }}€</span>
             <span class="badge badge-light">{{ tanken.distance }}km</span>
-            <span class="badge badge-light" v-if="tanken.wc">>WC</span>
-            <span class="badge badge-light" v-if="tanken.restaurant">>Restaurant</span>
-            <span class="badge badge-light" v-if="tanken.carwash">>Autowäsche</span>
+            <span class="badge badge-light" v-if="tanken.wc">WC</span>
+            <span class="badge badge-light" v-if="tanken.restaurant">Restaurant</span>
+            <span class="badge badge-light" v-if="tanken.carwash">Autowäsche</span>
         </div>
     </div>
     <button id="deleteButton" type="button" class="btn btn-danger">Eintrag löschen</button>
