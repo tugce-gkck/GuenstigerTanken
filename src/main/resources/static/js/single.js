@@ -86,7 +86,7 @@ function get(name){
         return decodeURIComponent(name[1]);
 };
 function getPathId(){
-    return window.location.pathname.replace("/","");
+    return window.location.pathname.replaceAll("/","");
 };
 
 tanken.retrieveTanken();
