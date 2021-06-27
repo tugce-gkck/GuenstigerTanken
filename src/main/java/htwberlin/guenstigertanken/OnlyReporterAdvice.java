@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-class UserAlreadyRegisteredAdvice {
+class OnlyReporterAdvice {
 
     @ResponseBody
-    @ExceptionHandler(UserAlreadyRegisteredException.class)
+    @ExceptionHandler(OnlyReporterException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String userAlreadyRegisteredHandler(UserAlreadyRegisteredException ex) {
+    String onlyReporterHandler(OnlyReporterException ex) {
         return ex.getMessage();
     }
 }

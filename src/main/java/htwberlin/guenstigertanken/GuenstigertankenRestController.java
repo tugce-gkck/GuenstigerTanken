@@ -120,7 +120,11 @@ public class GuenstigertankenRestController {
     @DeleteMapping("/tanken/{id}")
     void deleteEmployee(@PathVariable Long id, @RequestParam("session") String session) {
         String username = validateSession(session);
-        repository.deleteById(id);
+        String reporter = repository.findById(id).get().getReporter();
+        if(username.equals(reporter))
+            repository.deleteById(id);
+        else
+            throw new OnlyReporterException(reporter);
     }
 }
 

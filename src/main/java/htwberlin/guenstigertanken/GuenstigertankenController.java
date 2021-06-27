@@ -37,6 +37,16 @@ public class GuenstigertankenController {
 			return "single";
 		}
 	}
+
+	@GetMapping("/create")
+	public String createPage(Model model, @RequestParam(defaultValue = "") String session) {
+		if(session == null || session.equals("")){
+			return "error";
+		} else{
+			model.addAttribute("session",session);
+			return "create";
+		}
+	}
 	@GetMapping("/error")
 	public String loginPage() {
 		return "error";
