@@ -15,11 +15,13 @@ var user = new Vue({
                            that.username = xhttp.responseText;
                             document.getElementById("loginButton").style.visibility = "hidden";
                             document.getElementById("userInfo").style.visibility = "visible";
+                            document.getElementById("abmeldenButton").style.visibility = "visible";
                         }
                     } else {
                         console.log(xhttp.status, xhttp.statusText);
                         document.getElementById("loginButton").style.visibility = "visible";
                         document.getElementById("userInfo").style.visibility = "hidden";
+                        document.getElementById("abmeldenButton").style.visibility = "hidden";
                     }
                 }
             };
