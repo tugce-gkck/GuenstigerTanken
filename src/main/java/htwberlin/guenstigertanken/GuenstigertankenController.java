@@ -34,6 +34,7 @@ public class GuenstigertankenController {
 		if(session == null || session.equals("")){
 			return "error";
 		} else{
+			model.addAttribute("session",session);
 			return "single";
 		}
 	}
