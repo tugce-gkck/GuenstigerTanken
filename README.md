@@ -1,6 +1,8 @@
 # Guenstiger Tanken App
 Gruppenmitglieder: Tugce Gökcek 
 
+Heroku App URL: https://guenstigertanken.herokuapp.com/
+
 Themenbeschreibung: 
 - Eine Community-Benzinpreis-App um eine Übersicht der Benzinpreise in der Umgebung zu bekommen und günstiger zu tanken. 
 - Vereinfachte Welt:
