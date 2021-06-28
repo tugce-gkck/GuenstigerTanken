@@ -44,9 +44,9 @@ document.getElementById("createForm").addEventListener('submit', function(evt){
     var city = document.getElementById("inputCity").value;
     var price = document.getElementById("inputPrice").value;
     var distance = document.getElementById("inputDistance").value;
-    var wc = document.getElementById("checkWC").value;
-    var restaurant = document.getElementById("checkRestaurant").value;
-    var carwash = document.getElementById("checkCarwash").value;
+    var wc = document.getElementById("checkWC").checked;
+    var restaurant = document.getElementById("checkRestaurant").checked;
+    var carwash = document.getElementById("checkCarwash").checked;
 
     var body = {name: name, city: city, price: price,distance: distance,wc: wc, restaurant: restaurant, carwash: carwash};
     var bodyJson = JSON.stringify(body);
