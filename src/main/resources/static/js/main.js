@@ -31,7 +31,10 @@ var user = new Vue({
             xhttp.open("GET", "/user?session=" + session, true);
             xhttp.send();
         },
-
+        onClickCreate: function(){
+            var session = get("session");
+            window.open("/create?session=" + session, "_self");
+        }
     }
 });
 user.retrieveUsername();
