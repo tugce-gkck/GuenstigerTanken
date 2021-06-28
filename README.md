@@ -2,7 +2,7 @@
 Gruppenmitglieder: Tugce Gökcek 
 
 Themenbeschreibung: 
-- Eine Community-Benzinpreis-App für eine bestimmte Umgebung. 
+- Eine Community-Benzinpreis-App um eine Übersicht der Benzinpreise in der Umgebung zu bekommen und günstiger zu tanken. 
 - Vereinfachte Welt:
   - Es gibt nur eine Benzinsorte und somit nur einen Preis pro Tankstelle
   - Es wird zur Vereinfachung angenommen das alle Nutzer an der selben Position wohnen/sind zur Berechnung bzw. Bestimmung der Distanz
