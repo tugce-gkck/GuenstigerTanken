@@ -32,84 +32,45 @@ var user = new Vue({
     }
 });
 user.retrieveUsername();
-var tanken = new Vue({
-    el: '#contents',
-    data: {
-        tanken:{
-            "id": "id",
-            "date": "date",
-            "name": "name",
-            "city": "city",
-            "reporter": "reporter",
-            "price": "1,0",
-            "distance": "1,0",
-            "wc": true,
-            "restaurant": true,
-            "carwash": true
-        },
-        id: '0'
-    },
-    methods: {
-        retrieveTanken: function () {
-            var that = this;
-            var session = get("session");
-            var id = getPathId();
-            var xhttp = new XMLHttpRequest();
-            that.id = id;
-            xhttp.onreadystatechange = function () {
-                if (xhttp.readyState == XMLHttpRequest.DONE) {
-                    if (xhttp.status == 200) {
-                        if (xhttp.responseText) {
-                            that.tanken = JSON.parse(xhttp.responseText);
-                            var date = new Date(that.tanken.date);
-                            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-                            that.tanken.date = date.toLocaleDateString('de-DE', options);
-
-                            var price = that.tanken.price.toString();
-                            that.tanken.price = price.replace('.',',').replace(' ','')
-                            var distance = that.tanken.distance.toString();
-                            that.tanken.distance = distance.replace('.',',').replace(' ','')
-
-                        }
-                    } else {
-                        console.log(xhttp.status, xhttp.statusText);
-                    }
-                }
-            };
-            xhttp.open("GET", "/tanken/" + id + "/?session=" + session, true);
-            xhttp.send();
-        },
-        deleteTanken: function () {
-            var that = this;
-            var session = get("session");
-            var id = getPathId();
-            var xhttp = new XMLHttpRequest();
-            that.id = id;
-            xhttp.onreadystatechange = function () {
-                if (xhttp.readyState == XMLHttpRequest.DONE) {
-                    if (xhttp.status == 200) {
-                        alert("Erfolgreich gelöscht!");
-                        window.open("/?session=" + session, "_self");
-                    } else {
-                        alert("Löschen hat nicht funktioniert!");
-                        console.log(xhttp.status, xhttp.statusText);
-                    }
-                }
-            };
-            xhttp.open("DELETE", "/tanken/" + id + "/?session=" + session, true);
-            xhttp.send();
-        }
-
-    }
-});
 // URL Parameter auslesen
 function get(name){
     if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
         return decodeURIComponent(name[1]);
 };
-function getPathId(){
-    return window.location.pathname.replaceAll("/","");
-};
 
-tanken.retrieveTanken();
+document.getElementById("createForm").addEventListener('submit', function(evt){
+    evt.preventDefault();
+    var name = document.getElementById("inputName").value;
+    var city = document.getElementById("inputCity").value;
+    var price = document.getElementById("inputPrice").value;
+    var distance = document.getElementById("inputDistance").value;
+    var wc = document.getElementById("checkWC").value;
+    var restaurant = document.getElementById("checkRestaurant").value;
+    var carwash = document.getElementById("checkCarwash").value;
+
+    var body = {name: name, city: city, price: price,distance: distance,wc: wc, restaurant: restaurant, carwash: carwash};
+    var bodyJson = JSON.stringify(body);
+    var session = get("session");
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == XMLHttpRequest.DONE) {
+            if (xhttp.status == 200) {
+                alert("Neuer Eintrag konnte erfolgreich erstellt werden!");
+                window.open("/?session=" + session, "_self");
+            } else {
+                alert("Eintrag konnte nicht erstellt werden!");
+                console.log(xhttp.status, xhttp.statusText);
+            }
+        }
+    };
+    xhttp.open("POST", "/tanken?session=" + session, true);
+    xhttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    xhttp.send(bodyJson);
+});
+
+document.getElementById("cancelButton").addEventListener('click', function(evt){
+    evt.preventDefault();
+    var session = get("session");
+    window.open("/?session=" + session, "_self");
+});
 

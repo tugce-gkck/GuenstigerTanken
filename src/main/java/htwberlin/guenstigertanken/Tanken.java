@@ -44,7 +44,15 @@ public class Tanken {
         this.carwash = carwash;
     }
     public Tanken(String date,String name,String city, String reporter, double distance,double price,boolean wc, boolean restaurant, boolean carwash){
-        this(0,date,name,city,reporter,distance,price,wc,restaurant,carwash);
+        this.date = Timestamp.valueOf(date);
+        this.name = name;
+        this.city = city;
+        this.reporter = reporter;
+        this.distance = distance;
+        this.price = price;
+        this.wc = wc;
+        this.restaurant = restaurant;
+        this.carwash = carwash;
     }
     public Tanken(long id,Timestamp date,String name,String city,String reporter,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
         this.date = date;
@@ -59,7 +67,15 @@ public class Tanken {
         this.carwash = carwash;
     }
     public Tanken(Timestamp date,String name,String city,String reporter,double distance,double price,boolean wc, boolean restaurant, boolean carwash){
-        this(0,date,name,city,reporter,distance,price,wc,restaurant,carwash);
+        this.date = date;
+        this.name = name;
+        this.city = city;
+        this.reporter = reporter;
+        this.distance = distance;
+        this.price = price;
+        this.wc = wc;
+        this.restaurant = restaurant;
+        this.carwash = carwash;
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.*;
 
 @RestController
@@ -84,7 +85,13 @@ public class GuenstigertankenRestController {
 
     @PostMapping("/tanken")
     Tanken newTanken(@RequestBody Tanken newTanken, @RequestParam("session") String session) {
+
         String username = validateSession(session);
+        newTanken.setReporter(username);
+
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        newTanken.setDate(ts);
+
         return repository.save(newTanken);
     }
 

@@ -30,22 +30,53 @@
     <a id="loginButton" style="visibility: hidden" class="btn btn-primary navbar-btn" href="/" role="button">Login</a>
 </div>
 <div id="contents">
-<h1>Tankstelle mit ID: {{ id }}</h1>
+<h1>Neuen Eintrag erstellen</h1>
 <hr>
-<div >
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{ tanken.name }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ tanken.city }}</h6>
-            <p class="card-text">Berichtet von {{ tanken.reporter }}</p>
-            <span class="badge badge-light">{{ tanken.price }}€</span>
-            <span class="badge badge-light">{{ tanken.distance }}km</span>
-            <span class="badge badge-light" v-if="tanken.wc">>WC</span>
-            <span class="badge badge-light" v-if="tanken.restaurant">>Restaurant</span>
-            <span class="badge badge-light" v-if="tanken.carwash">>Autowäsche</span>
+<div>
+    <form id="createForm">
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input class="form-control" id="inputName" placeholder="Name">
         </div>
-    </div>
-    <button id="deleteButton" type="button" class="btn btn-danger">Eintrag löschen</button>
+        <div class="form-group">
+            <label for="inputCity">Stadt</label>
+            <input class="form-control" id="inputCity" placeholder="Stadt">
+        </div>
+        <div class="form-group">
+            <label for="inputPrice">Preis</label>
+            <input type="number" step="any" id="inputPrice" class="form-control">
+            <div class="input-group-append">
+                <span class="input-group-text">€</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputDistance">Distanz</label>
+            <input type="number" step="any" id="inputDistance" class="form-control">
+            <div class="input-group-append">
+                <span class="input-group-text">km</span>
+            </div>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkWC">
+            <label class="form-check-label" for="checkWC">
+                WC
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkRestaurant">
+            <label class="form-check-label" for="checkRestaurant">
+                Restaurant
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkCarwash">
+            <label class="form-check-label" for="checkCarwash">
+                Autowäsche
+            </label>
+        </div>
+        <button class="btn btn-primary" type="submit">Erstellen</button>
+        <button id="cancelButton" class="btn btn-danger" >Abbrechen</button>
 </div>
 </div>
 </body>
